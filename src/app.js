@@ -39,7 +39,6 @@ function render(Component) {
 }
 
 render(AppRoot);
-
 if (module.hot) {
 	module.hot.accept('./App/AppRoot.js', () => {
 		const NewAppRoot = require('./App/AppRoot.js').default;
