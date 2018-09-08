@@ -37,6 +37,7 @@ function render(Component) {
 		document.getElementById('react-root')
 	);
 }
+
 render(AppRoot);
 
 if (module.hot) {
