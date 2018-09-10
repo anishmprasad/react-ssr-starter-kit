@@ -12,11 +12,6 @@ server.use(cookieParser());
 
 const expressStaticGzip = require('express-static-gzip');
 
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddlware = require('webpack-hot-middleware');
-
-// const render = require('../../build/prod-server-bundle.js').default;
-
 // import { createStore } from 'redux'
 // import { Provider } from 'react-redux'
 
@@ -38,12 +33,12 @@ if (isDev) {
 	const clientCompiler = compiler.compilers[0];
 	// const serverCompiler = compiler.compilers[1];
 
-	webpackDevMiddleware(
+	const webpackDevMiddleware = require('webpack-dev-middleware')(
 		compiler,
 		configDevClient.devServer,
 	);
 
-	webpackHotMiddlware(
+	const webpackHotMiddlware = require('webpack-hot-middleware')(
 		clientCompiler,
 		configDevClient.devServer,
 	);

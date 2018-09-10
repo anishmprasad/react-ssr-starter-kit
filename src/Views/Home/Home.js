@@ -40,7 +40,7 @@ class Home extends Component {
 							onChange={this.handleChange}
 						/>
 						<div className="input-value">{input}</div>
-						{data.map((array) => {
+						{data && data.map((array) => {
 							return (
 								<div key={`array-${array.id}`}>
 									<h2>{array.title}</h2>
