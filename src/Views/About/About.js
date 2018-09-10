@@ -1,23 +1,24 @@
 import React from 'react';
-import Content from '../../Components/Content';
-const MarkdownData = require('../../../data/post.md');
-const imagePath = require('../../assets/images/logo.svg');
-import styles from './About.css';
 import { Helmet } from 'react-helmet';
+import Content from '../../Components/Content';
+// const MarkdownData = require('../../../data/post.md');
+import styles from './About.css';
+
+const imagePath = require('../../assets/images/logo.svg');
 
 function About() {
 	return (
 		<div>
-			<Helmet encodeSpecialCharacters={true}>
+			<Helmet encodeSpecialCharacters>
 				<title>React SSR Boilerplate • About</title>
 			</Helmet>
 			<Content>
 				<div className={styles.profile}>
-					<img src={imagePath} />
-					<h1 className={styles.title}>{MarkdownData.title}</h1>
+					<img src={imagePath} alt="imagePath" />
+					<h1 className={styles.title}>About</h1>
 					<div
 						className={styles.content}
-						dangerouslySetInnerHTML={{ __html: MarkdownData.__content }}
+						// dangerouslySetInnerHTML={{ __html: MarkdownData.__content }}
 					/>
 				</div>
 			</Content>

@@ -1,17 +1,14 @@
 import React from 'react';
-import universal from 'react-universal-component';
-import { Route, Switch, Redirect } from 'react-router';
+// import universal from 'react-universal-component';
+import { Route, Switch } from 'react-router';
+import { Helmet } from 'react-helmet';
 import Nav from '../Components/Nav';
 import '../assets/css/globals.css';
-import { Helmet } from 'react-helmet';
-import Loading from '../Components/Loading';
-import { RedirectWithStatus } from '../Components/RedirectStatus';
+import RedirectWithStatus from '../Components/RedirectStatus';
+import UniversalComponent from '../shared/routeHelper';
 
-const UniversalComponent = universal(props => import(`../Views/${props.page}`), {
-	loading: () => <Loading />,
-});
 
-export default ({ staticContext, lang }) => (
+export default ({ lang }) => (
 	<div>
 		<Helmet>
 			<link

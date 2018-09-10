@@ -1,4 +1,4 @@
-const language = 'de';
+// const language = 'de';
 
 const translationsDe = {
 	language: {
@@ -19,12 +19,11 @@ const t = (lang, key, params) => {
 		.reduce((acc, currKey) => (acc ? acc[currKey] : undefined), langTranslations);
 
 	if (typeof translation !== 'string') {
-		console.warn('No translation found for', key);
 		return key;
 	}
 
 	if (params) {
-		return translation.replace(/\$\{\w+\}/g, match => {
+		return translation.replace(/\$\{\w+\}/g, (match) => {
 			const param = match.substring(2, match.length - 1);
 			return params[param] || match;
 		});
@@ -33,4 +32,4 @@ const t = (lang, key, params) => {
 	return translation;
 };
 
-export { t };
+export default { t };

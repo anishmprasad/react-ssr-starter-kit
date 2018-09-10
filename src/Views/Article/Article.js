@@ -7,7 +7,7 @@ import styles from './Article.css';
 function Article() {
 	return (
 		<div>
-			<Helmet encodeSpecialCharacters={true}>
+			<Helmet encodeSpecialCharacters>
 				<title>React SSR Boilerplate • Article</title>
 			</Helmet>
 			<Content>

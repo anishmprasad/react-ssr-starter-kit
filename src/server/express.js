@@ -1,18 +1,24 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
-const server = express();
-server.use(cookieParser());
-import path from 'path';
-const expressStaticGzip = require('express-static-gzip');
 import webpack from 'webpack';
 import webpackHotServerMiddleware from 'webpack-hot-server-middleware';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
+import configDevClient from '../../config/webpack.dev-client';
+import configDevServer from '../../config/webpack.dev-server';
+import configProdClient from '../../config/webpack.prod-client';
+import configProdServer from '../../config/webpack.prod-server';
+// import path from "path";
+const server = express();
+server.use(cookieParser());
 
-import configDevClient from '../../config/webpack.dev-client.js';
-import configDevServer from '../../config/webpack.dev-server.js';
-import configProdClient from '../../config/webpack.prod-client.js';
-import configProdServer from '../../config/webpack.prod-server.js';
+const expressStaticGzip = require('express-static-gzip');
+
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddlware = require('webpack-hot-middleware');
+
+// const render = require('../../build/prod-server-bundle.js').default;
+
+// import { createStore } from 'redux'
+// import { Provider } from 'react-redux'
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
@@ -20,27 +26,26 @@ const PORT = process.env.PORT || 8080;
 let isBuilt = false;
 
 const done = () => {
-	!isBuilt &&
-		server.listen(PORT, () => {
-			isBuilt = true;
-			console.log(`Server listening on http://localhost:${PORT} in ${process.env.NODE_ENV}`);
-		});
+	!isBuilt && server.listen(PORT, () => {
+		isBuilt = true;
+		console.log(`Server listening on http://localhost:${PORT} in ${process.env.NODE_ENV}`);
+	});
 };
 
 if (isDev) {
 	const compiler = webpack([configDevClient, configDevServer]);
 
 	const clientCompiler = compiler.compilers[0];
-	const serverCompiler = compiler.compilers[1];
+	// const serverCompiler = compiler.compilers[1];
 
-	const webpackDevMiddleware = require('webpack-dev-middleware')(
+	webpackDevMiddleware(
 		compiler,
-		configDevClient.devServer
+		configDevClient.devServer,
 	);
 
-	const webpackHotMiddlware = require('webpack-hot-middleware')(
+	webpackHotMiddlware(
 		clientCompiler,
-		configDevClient.devServer
+		configDevClient.devServer,
 	);
 
 	server.use(webpackDevMiddleware);
@@ -51,17 +56,17 @@ if (isDev) {
 } else {
 	webpack([configProdClient, configProdServer]).run((err, stats) => {
 		const clientStats = stats.toJson().children[0];
-		const render = require('../../build/prod-server-bundle.js').default;
 		console.log(
 			stats.toString({
 				colors: true,
-			})
+			}),
 		);
 		server.use(
 			expressStaticGzip('dist', {
 				enableBrotli: true,
-			})
+			}),
 		);
+		const render = require('../../build/prod-server-bundle.js').default;
 		server.use(render({ clientStats }));
 		done();
 	});
