@@ -1,6 +1,6 @@
-[![react-ssr-starter-kit]](https://github.com/Anishmprasad/react-ssr-starter-kit)
+# redux-typeahead
 
-This project has been created with Webpack.
+A starter kit for react serverside rendering applications 
 
 Features
 ========
