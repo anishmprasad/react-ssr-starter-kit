@@ -7,6 +7,7 @@ Features
 * Prerender Methord { getInitialBeforeRender } on view components
 * ES6 Support
 * Redux Support
+* eslint Support
 
 Packages Needed
 ===============
