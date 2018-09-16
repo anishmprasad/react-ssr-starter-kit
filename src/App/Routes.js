@@ -1,14 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 // import Header from "../Header";
-import MainRoutes from "./MainRoutes";
 
-import universal from 'react-universal-component';
+// import universal from 'react-universal-component';
 import { Helmet } from 'react-helmet';
 import Nav from '../Components/Nav';
 import '../assets/css/globals.css';
-import RedirectWithStatus from '../Components/RedirectStatus';
-import Loading from '../Components/Loading';
+// import RedirectWithStatus from '../Components/RedirectStatus';
+// import Loading from '../Components/Loading';
+
+import MainRoutes from "./MainRoutes";
+
 // import UniversalComponent from '../shared/routeHelper';
 
 // import Loadable from 'react-loadable';
@@ -89,37 +91,27 @@ import Loading from '../Components/Loading';
 // 	</div>
 // );
 
-class Routes extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: "Welcome to React SSR!"
-    };
-  }
-
-  render() {
-    console.log("Routes", MainRoutes)
-    return(
-      <div>
-        <Helmet>
-          <link
-            rel="shortcut icon"
-            href="https://res.cloudinary.com/riangle/image/upload/v1531060402/favicon_zxkyaz.ico"
-            type="image/x-icon"
-          />
- 			    <meta name="viewport" content="width=device-width, initial-scale=1" />
- 			    <title>Isomorphic React Starter Kit</title>
-        </Helmet>
-		    <Nav />
-        {/* <h1>{this.state.title}</h1> */}
-        <Switch>
-          {MainRoutes.map(route => <Route key={route.path} {...route} />)}
-          {/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
-          <Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
-        </Switch>
-      </div>
-    )
-  }
+function Routes() {
+	return(
+		<div>
+			<Helmet>
+				<link
+					rel="shortcut icon"
+					href="https://res.cloudinary.com/riangle/image/upload/v1531060402/favicon_zxkyaz.ico"
+					type="image/x-icon"
+				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<title>Isomorphic React Starter Kit</title>
+			</Helmet>
+			<Nav />
+			{/* <h1>{this.state.title}</h1> */}
+			<Switch>
+				{MainRoutes.map(route => <Route key={route.path} {...route} />)}
+				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
+				<Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
+			</Switch>
+		</div>
+	)
 }
 // { routes.map( route => <Route key={ route.path } { ...route } /> ) }
 export default Routes;
