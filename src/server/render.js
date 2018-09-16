@@ -7,12 +7,15 @@ import { Provider } from 'react-redux';
 
 import { flushChunkNames } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
+import { matchPath } from "react-router-dom";
 import extractLocalesFromReq from '../client-locale/extractLocalesFromReq';
 import guessLocale from '../client-locale/guessLocale';
 
+
 // import { createStore } from 'redux'
 
-import Routes from '../App/Routes';
+import mainroutes from "../App/MainRoutes";
+import Routes from '../App/Routes'
 // import qs from 'qs' // Add this at the top of the file
 // import reducers from '../redux/reducer'
 // import devTools from 'remote-redux-devtools';
@@ -25,7 +28,7 @@ import Routes from '../App/Routes';
 // import request from 'request';
 import createStore from '../redux/store/store';
 
-import { InitialAction } from '../redux/actions/initialAction';
+// import { InitialAction } from '../redux/actions/initialAction';
 
 
 export default ({ clientStats }) => (req, res) => {
@@ -44,7 +47,28 @@ export default ({ clientStats }) => (req, res) => {
 
 	// Grab the initial state from our Redux store
 	const context = { };
-	Promise.all([store.dispatch(InitialAction())]).then(() => {
+
+	const dataRequirements =
+		mainroutes
+			.filter( route => {
+				console.log( "matchPath( req.url, route ) => ", req.url, route, matchPath( req.url, route ) );
+				return matchPath(req.url, route );
+			} ) // filter matching paths
+			.map( route => {
+				console.log("route.component =>", route.component );
+				return route.component;
+			} ) // map to components
+			.filter( comp => {
+				console.log( "comp.getInitialBeforeRender =>", comp.getInitialBeforeRender );
+				return comp.getInitialBeforeRender;
+			} ) // check if components have data requirement
+			.map( comp => {
+				console.log( "store.dispatch( comp.getInitialBeforeRender( ) ) =>", store.dispatch( comp.getInitialBeforeRender() ) );
+				return store.dispatch( comp.getInitialBeforeRender( ) );
+			} ); // dispatch data requirement
+	console.log( "dataRequirements", dataRequirements );
+
+	Promise.all(dataRequirements).then(() => {
 		const app = renderToString(
 			<Provider store={store}>
 				<StaticRouter location={req.url} context={context}>

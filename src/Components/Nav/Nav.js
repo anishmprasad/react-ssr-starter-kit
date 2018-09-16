@@ -11,22 +11,22 @@ import logo from '../../assets/images/logo.svg';
 
 
 function Nav(props) {
-	const { lang, name } = props;
+	const { name } = props;
 	return (
 		<div className={styles.navigation}>
-			<Link to={`/${lang}`} className={styles.logo}>
+			<Link to="/" className={styles.logo}>
 				<img src={logo} alt="Logo" />
 				<span>React Serverside rendering</span>
 			</Link>
 			<ul className={styles.menu}>
 				<li>
-					<NavLink to={`/${lang}/about`} activeClassName={styles.active}>About</NavLink>
+					<NavLink to="/about" activeClassName={styles.active}>About</NavLink>
 				</li>
 				<li>
-					<NavLink to={`/${lang}/article`} activeClassName={styles.active}>Article</NavLink>
+					<NavLink to="/article" activeClassName={styles.active}>Article</NavLink>
 				</li>
 				<li>
-					<NavLink to={`/${lang}/profile`} activeClassName={styles.active}>Profile</NavLink>
+					<NavLink to="/profile" activeClassName={styles.active}>Profile</NavLink>
 				</li>
 				<li>{name}</li>
 			</ul>
@@ -34,6 +34,7 @@ function Nav(props) {
 	);
 }
 function mapStateToProps(state) {
+	console.log('mapStateToProps',state)
 	const { first_name: firstName } = state.userInfo && state.userInfo.personal_details;
 	return {
 		name: firstName,

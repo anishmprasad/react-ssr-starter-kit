@@ -10,6 +10,9 @@ import {
 	inputUpdateAction,
 	userInfoAction
 } from '../../redux/actions/sampleAction';
+import {
+	InitialAction
+} from '../../redux/actions/initialAction';
 
 class Home extends Component { 
 		state	=	{	value: ""	};
@@ -25,6 +28,7 @@ class Home extends Component {
 		};
 
 		render() {
+			console.log('home')
 			const { data, input } = this.props;
 			const { value } = this.state;
 			return (
@@ -53,7 +57,7 @@ class Home extends Component {
 			);
 		}
 }
-
+Home.getInitialBeforeRender = () => InitialAction();
 function mapStateToProps(state) {
 	const { input,sample } = state.sampleReducer
 	return {
