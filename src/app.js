@@ -45,6 +45,6 @@ render(AppRoot);
 
 if (module.hot) {
 	module.hot.accept("./routes/AppRoot.js", () => {
-    render(NewAppRoot);
-  });
+		render(NewAppRoot);
+	});
 }
