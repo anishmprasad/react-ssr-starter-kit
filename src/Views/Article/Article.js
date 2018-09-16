@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Content from '../../Components/Content';
+import Content from '../../components/Content';
 import data from '../../../data/bio';
 import styles from './Article.css';
 

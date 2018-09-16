@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Content from '../../Components/Content';
+import Content from '../../components/Content';
 // const MarkdownData = require('../../../data/post.md');
 import styles from './About.css';
 

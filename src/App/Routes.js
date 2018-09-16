@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 
 // import universal from 'react-universal-component';
 import { Helmet } from 'react-helmet';
-import Nav from '../Components/Nav';
+import Nav from '../components/Nav';
 import '../assets/css/globals.css';
 // import RedirectWithStatus from '../Components/RedirectStatus';
 // import Loading from '../Components/Loading';
