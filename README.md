@@ -41,6 +41,48 @@ Builds and runs the app in production
 > $ npm start
 ```
 
+Getting started
+===============
+
+sample Home component for static declaration of data requirements
+
+```jsx
+class Home extends Component { 
+		render() {
+			const { data, input } = this.props;
+			const { value } = this.state;
+			return (
+				<div>
+					<Helmet encodeSpecialCharacters>
+						<title>React ServerSideRendering • Home</title>
+					</Helmet>
+					<div className={styles.intro}>
+						{data && data.map((array) => {
+							return (
+								<div key={`array-${array.id}`}>
+									<h2>{array.title}</h2>
+									<p>{array.body}</p>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			);
+		}
+}
+Home.getInitialBeforeRender = () => InitialAction(); // static declaration of data requirements
+function mapStateToProps(state) {
+	const { sample } = state.sampleReducer
+	return {
+		data: sample && sample.data
+	};
+}
+
+export default connect(mapStateToProps, null)(Home);
+```
+
+You may also want to download one of the distributions from the `dist` folder, and load it in the browser that way. A global variable named `Typeahead` will be available to use.
+
 Issues
 ======
 Please [file an issue](https://github.com/Anishmprasad/react-ssr-starter-kit/issues) if you find a bug, or need help.
