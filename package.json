@@ -1,8 +1,8 @@
 {
-	"name": "isomorphic-react",
+	"name": "react-ssr-starter-kit",
 	"version": "1.0.0",
 	"main": "main.js",
-	"description": "Isomorphic / Universal React",
+	"description": "A starter kit for react serverside rendering applications.",
 	"repository": "",
 	"license": "MIT",
 	"dependencies": {
