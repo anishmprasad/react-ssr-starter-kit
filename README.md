@@ -1,4 +1,4 @@
-# redux-typeahead
+# react-ssr-starter-kit
 
 A starter kit for react serverside rendering applications 
 
