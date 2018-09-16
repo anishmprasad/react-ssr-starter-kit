@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Loading.css';
 import logo from '../../assets/images/logo.svg';
-import AppearAfter from '../../Components/AppearAfter';
+import AppearAfter from '../AppearAfter';
 
 function Loading() {
 	return (

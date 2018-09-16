@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
-import Content from '../../Components/Content';
-import data from '../../../data/bio';
+import Content from '../../components/Content';
+// import data from '../../../data/bio';
 import styles from './NotFound.css';
-import AppearAfter from '../../Components/AppearAfter';
-import { Status } from '../../Components/Status';
+import AppearAfter from '../../components/AppearAfter';
+import Status from '../../components/Status';
 
 function NotFound() {
 	return (
 		<Fragment>
-			<Helmet encodeSpecialCharacters={true}>
+			<Helmet encodeSpecialCharacters>
 				<title>React SSR Boilerplate • Not Found</title>
 			</Helmet>
 			<Status code={404} />

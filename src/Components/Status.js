@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router';
 
-export function Status({ code }) {
+export default function Status({ code }) {
 	return (
 		<Route
 			render={({ staticContext }) => {
