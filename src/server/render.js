@@ -14,8 +14,8 @@ import guessLocale from '../client-locale/guessLocale';
 
 // import { createStore } from 'redux'
 
-import mainroutes from "../App/MainRoutes";
-import Routes from '../App/Routes'
+import mainroutes from "../routes/MainRoutes";
+import Routes from "../routes/Routes";
 // import qs from 'qs' // Add this at the top of the file
 // import reducers from '../redux/reducer'
 // import devTools from 'remote-redux-devtools';

@@ -52,10 +52,10 @@
 // );
 
 
-import Home from "../Views/Home";
-import About from "../Views/About";
-import Article from "../Views/Article";
-import Profile from "../Views/Profile";
+import Home from "../views/Home";
+import About from "../views/About";
+import Article from "../views/Article";
+import Profile from "../views/Profile";
 
 export default [
 	{
