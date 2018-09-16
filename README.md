@@ -81,8 +81,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, null)(Home);
 ```
 
-You may also want to download one of the distributions from the `dist` folder, and load it in the browser that way. A global variable named `Typeahead` will be available to use.
-
 Issues
 ======
 Please [file an issue](https://github.com/Anishmprasad/react-ssr-starter-kit/issues) if you find a bug, or need help.
