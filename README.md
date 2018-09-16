@@ -1,6 +1,6 @@
-[![react-ssr-starter-kit]](https://github.com/Anishmprasad/react-ssr-starter-kit)
+# react-ssr-starter-kit
 
-This project has been created with Webpack.
+A starter kit for react serverside rendering applications 
 
 Features
 ========
