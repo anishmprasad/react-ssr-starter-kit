@@ -4,7 +4,7 @@ A starter kit for react serverside rendering applications
 
 Features
 ========
-* Prerender Methord { getInitialBeforeRender } on view components
+* Prerender Method { getInitialBeforeRender } on view components
 * ES6 Support
 * Redux Support
 * eslint Support
