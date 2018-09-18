@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 // import Header from "../Header";
+import Loadable from 'react-loadable';
 
 // import universal from 'react-universal-component';
 import { Helmet } from 'react-helmet';
@@ -13,7 +14,6 @@ import MainRoutes from "./MainRoutes";
 
 // import UniversalComponent from '../shared/routeHelper';
 
-import Loadable from 'react-loadable';
 // import Loading from './my-loading-component';
 // import { SplitRoute } from "../../utils/routeHelper";
 
@@ -22,16 +22,15 @@ import Loadable from 'react-loadable';
 // import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 export const SplitRoute = (props) => {
-	console.log(props)
-    const component = Loadable({
-      loader: props.component,
-      loading: Loading
-    });
-    if (process.env.NODE_ENV == 'development') {
-        return <Route {...props} component={component} />;
-    }
-    return <Route {...props} component={component} />;
-
+	const { component } = props
+	const loadableComponent = Loadable({
+		loader: component,
+		loading: Loading
+	});
+	if (process.env.NODE_ENV == 'development') {
+		return <Route {...props} component={loadableComponent} />;
+	}
+	return <Route {...props} component={loadableComponent} />;
 };
 
 // const LoadableComponent = Loadable({
@@ -115,7 +114,7 @@ function Routes() {
 							exact={route.exact}
 							path={route.path}
 							component={route.component}
-          	/>
+						/>
 					)
 				})}
 				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
