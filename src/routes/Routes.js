@@ -7,13 +7,13 @@ import { Helmet } from 'react-helmet';
 import Nav from '../components/Nav';
 import '../assets/css/globals.css';
 // import RedirectWithStatus from '../Components/RedirectStatus';
-// import Loading from '../Components/Loading';
+import Loading from '../components/Loading';
 
 import MainRoutes from "./MainRoutes";
 
 // import UniversalComponent from '../shared/routeHelper';
 
-// import Loadable from 'react-loadable';
+import Loadable from 'react-loadable';
 // import Loading from './my-loading-component';
 // import { SplitRoute } from "../../utils/routeHelper";
 
@@ -21,17 +21,18 @@ import MainRoutes from "./MainRoutes";
 
 // import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-// export const SplitRoute = (props) => {
-//     const component = Loadable({
-//         loader: props.component,
-//         loading: Loader
-//     });
-//     if (process.env.NODE_ENV == 'development') {
-//         return <Route {...props} component={component} />;
-//     }
-//     return <Route {...props} component={component} />;
+export const SplitRoute = (props) => {
+	console.log(props)
+    const component = Loadable({
+      loader: props.component,
+      loading: Loading
+    });
+    if (process.env.NODE_ENV == 'development') {
+        return <Route {...props} component={component} />;
+    }
+    return <Route {...props} component={component} />;
 
-// };
+};
 
 // const LoadableComponent = Loadable({
 //     loader: () => import('./my-component'),
@@ -106,7 +107,17 @@ function Routes() {
 			<Nav />
 			{/* <h1>{this.state.title}</h1> */}
 			<Switch>
-				{MainRoutes.map(route => <Route key={route.path} {...route} />)}
+				{/* {MainRoutes.map(route => <Route key={route.path} {...route} />)} */}
+				{MainRoutes.map(route => {
+					console.log(route)
+					return(
+						<SplitRoute
+							exact={route.exact}
+							path={route.path}
+							component={route.component}
+          	/>
+					)
+				})}
 				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
 				<Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
 			</Switch>
