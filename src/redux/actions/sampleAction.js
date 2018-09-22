@@ -9,7 +9,6 @@ import {
 import createActionWithTypeAndPayload from './commonAction';
 
 export function sampleAction() {
-	console.log('sampleAction')
 	const url = 'https://jsonplaceholder.typicode.com/posts';
 	return function (dispatch) {
 		axios.get(url)

@@ -51,22 +51,22 @@ export default ({ clientStats }) => (req, res) => {
 	const dataRequirements =
 		mainroutes
 			.filter( route => {
-				console.log( "matchPath( req.url, route ) => ", req.url, route, matchPath( req.url, route ) );
+				// console.log( "matchPath( req.url, route ) => ", req.url, route, matchPath( req.url, route ) );
 				return matchPath(req.url, route );
 			} ) // filter matching paths
 			.map( route => {
-				console.log("route.component =>", route.component );
+				// console.log("route.component =>", route.component );
 				return route.component;
 			} ) // map to components
 			.filter( comp => {
-				console.log( "comp.getInitialBeforeRender =>", comp.getInitialBeforeRender );
+				// console.log( "comp.getInitialBeforeRender =>", comp.getInitialBeforeRender );
 				return comp.getInitialBeforeRender;
 			} ) // check if components have data requirement
 			.map( comp => {
-				console.log( "store.dispatch( comp.getInitialBeforeRender( ) ) =>", store.dispatch( comp.getInitialBeforeRender() ) );
+				// console.log( "store.dispatch( comp.getInitialBeforeRender( ) ) =>", store.dispatch( comp.getInitialBeforeRender() ) );
 				return store.dispatch( comp.getInitialBeforeRender( ) );
 			} ); // dispatch data requirement
-	console.log( "dataRequirements", dataRequirements );
+	// console.log( "dataRequirements", dataRequirements );
 
 	Promise.all(dataRequirements).then(() => {
 		const app = renderToString(

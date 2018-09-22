@@ -11,6 +11,7 @@ import Nav from '../components/Nav';
 import '../assets/css/globals.css';
 // import RedirectWithStatus from '../Components/RedirectStatus';
 import Loading from '../components/Loading';
+import Home from '../views/Home'
 
 import MainRoutes from "./MainRoutes";
 
@@ -30,7 +31,8 @@ export const SplitRoute = (props) => {
 		loader: component,
 		loading: Loading
 	});
-	return <Route {...props} component={loadableComponent} />;
+	console.log('loadableComponent',loadableComponent)
+	return <Route {...props} component={component} />;
 };
 
 // const LoadableComponent = Loadable({
@@ -101,22 +103,16 @@ function Routes() {
 			</Helmet>
 			<Nav />
 			<Switch>
-				{MainRoutes.map(route => <Route key={route.path} {...route} />)}
-				{/* {MainRoutes.map(route => {
-					console.log(route)
+				{/* {MainRoutes.map(route => <Route key={route.path} {...route} />)} */}
+				{MainRoutes.map(route => {
 					return(
-						// <Route
-						// 	exact
-						// 	path={props.path}
-						// 	render={routeProps => <UniversalComponent page={props.component} {...routeProps} />}
-						// />
 						<SplitRoute
 							exact={route.exact}
 							path={route.path}
 							component={route.component}
 						/>
 					)
-				})} */}
+				})}
 				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
 				<Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
 			</Switch>

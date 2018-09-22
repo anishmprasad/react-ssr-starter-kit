@@ -28,7 +28,6 @@ class Home extends Component {
 		};
 
 		render() {
-			console.log('home')
 			const { data, input } = this.props;
 			const { value } = this.state;
 			return (
