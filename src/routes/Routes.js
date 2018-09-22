@@ -2,6 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 // import Header from "../Header";
 import Loadable from 'react-loadable';
+// import universal from 'react-universal-component';
+
 
 // import universal from 'react-universal-component';
 import { Helmet } from 'react-helmet';
@@ -22,6 +24,7 @@ import MainRoutes from "./MainRoutes";
 // import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 export const SplitRoute = (props) => {
+	console.log('props =>',props)
 	const { component } = props
 	const loadableComponent = Loadable({
 		loader: component,
@@ -38,19 +41,15 @@ export const SplitRoute = (props) => {
 //     loading: Loading,
 // });
 
-// import React from 'react';
-// import universal from 'react-universal-component';
-// import { Route, Switch } from 'react-router';
-// import { Helmet } from 'react-helmet';
-// import Nav from '../Components/Nav';
-// import '../assets/css/globals.css';
-// import RedirectWithStatus from '../Components/RedirectStatus';
-// import Loading from '../Components/Loading';
-// // import UniversalComponent from '../shared/routeHelper';
 
-// const UniversalComponent = universal(props => import(`../Views/${props.page}`), {
-// 	loading: () => <Loading />,
-// });
+	// const UniversalComponent = (props) => {
+	// 	console.log('UniversalComponent',props)
+	// 	return universal(props => import('../views/Home'), 
+	// 		{
+	// 			loading: () => <Loading />,
+	// 		}
+	// 	)
+	// };
 
 // export default ({ lang }) => (
 // 	<div>
@@ -104,12 +103,16 @@ function Routes() {
 				<title>Isomorphic React Starter Kit</title>
 			</Helmet>
 			<Nav />
-			{/* <h1>{this.state.title}</h1> */}
 			<Switch>
 				{/* {MainRoutes.map(route => <Route key={route.path} {...route} />)} */}
 				{MainRoutes.map(route => {
 					console.log(route)
 					return(
+						// <Route
+						// 	exact
+						// 	path={props.path}
+						// 	render={routeProps => <UniversalComponent page={props.component} {...routeProps} />}
+						// />
 						<SplitRoute
 							exact={route.exact}
 							path={route.path}
