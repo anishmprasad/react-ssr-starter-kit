@@ -101,8 +101,8 @@ function Routes() {
 			</Helmet>
 			<Nav />
 			<Switch>
-				{/* {MainRoutes.map(route => <Route key={route.path} {...route} />)} */}
-				{MainRoutes.map(route => {
+				{MainRoutes.map(route => <Route key={route.path} {...route} />)}
+				{/* {MainRoutes.map(route => {
 					console.log(route)
 					return(
 						// <Route
@@ -116,7 +116,7 @@ function Routes() {
 							component={route.component}
 						/>
 					)
-				})}
+				})} */}
 				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
 				<Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
 			</Switch>
