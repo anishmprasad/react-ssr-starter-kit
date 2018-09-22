@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Content from '../../components/Content';
-import data from '../../../data/bio';
 import styles from './Article.css';
 
 function Article() {
@@ -13,7 +12,7 @@ function Article() {
 			<Content>
 				<div className={styles.article}>
 					<h1 className={styles.title}>Article</h1>
-					<div>{data}</div>
+					<div>anish</div>
 				</div>
 			</Content>
 		</div>

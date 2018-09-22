@@ -30,9 +30,6 @@ export const SplitRoute = (props) => {
 		loader: component,
 		loading: Loading
 	});
-	if (process.env.NODE_ENV == 'development') {
-		return <Route {...props} component={loadableComponent} />;
-	}
 	return <Route {...props} component={loadableComponent} />;
 };
 
