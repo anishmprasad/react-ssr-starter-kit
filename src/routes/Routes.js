@@ -5,13 +5,13 @@ import Loadable from 'react-loadable';
 // import universal from 'react-universal-component';
 
 
-// import universal from 'react-universal-component';
+import universal from 'react-universal-component';
 import { Helmet } from 'react-helmet';
 import Nav from '../components/Nav';
 import '../assets/css/globals.css';
 // import RedirectWithStatus from '../Components/RedirectStatus';
 import Loading from '../components/Loading';
-import Home from '../views/Home'
+// import Home from '../views/Home'
 
 import MainRoutes from "./MainRoutes";
 
@@ -32,23 +32,12 @@ export const SplitRoute = (props) => {
 		loading: Loading
 	});
 	console.log('loadableComponent',loadableComponent)
-	return <Route {...props} component={component} />;
+	return <Route {...props} component={loadableComponent} />;
 };
 
-// const LoadableComponent = Loadable({
-//     loader: () => import('./my-component'),
-//     loading: Loading,
-// });
-
-
-	// const UniversalComponent = (props) => {
-	// 	console.log('UniversalComponent',props)
-	// 	return universal(props => import('../views/Home'), 
-	// 		{
-	// 			loading: () => <Loading />,
-	// 		}
-	// 	)
-	// };
+const UniversalComponent = universal(props => import(`../views/${props.page}`), {
+	loading: () => <Loading />,
+});
 
 // export default ({ lang }) => (
 // 	<div>
@@ -88,7 +77,6 @@ export const SplitRoute = (props) => {
 // 		</Switch>
 // 	</div>
 // );
-
 function Routes() {
 	return(
 		<div>
@@ -103,21 +91,9 @@ function Routes() {
 			</Helmet>
 			<Nav />
 			<Switch>
-				{/* {MainRoutes.map(route => <Route key={route.path} {...route} />)} */}
-				{MainRoutes.map(route => {
-					return(
-						<SplitRoute
-							exact={route.exact}
-							path={route.path}
-							component={route.component}
-						/>
-					)
-				})}
-				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
-				<Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
+				{MainRoutes.map(route => <Route key={route.path} {...route} />)}
 			</Switch>
 		</div>
 	)
 }
-// { routes.map( route => <Route key={ route.path } { ...route } /> ) }
 export default Routes;
