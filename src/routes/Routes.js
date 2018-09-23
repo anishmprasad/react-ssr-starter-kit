@@ -35,7 +35,7 @@ export const SplitRoute = (props) => {
 	return <Route {...props} component={loadableComponent} />;
 };
 
-const UniversalComponent = universal(props => import(`../views/${props.page}`), {
+export const UniversalComponent = universal(props => import(`../views/${props.page}`), {
 	loading: () => <Loading />,
 });
 
