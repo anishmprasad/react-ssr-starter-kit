@@ -2,27 +2,14 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 // import Header from "../Header";
 import Loadable from 'react-loadable';
-// import universal from 'react-universal-component';
-
 
 import universal from 'react-universal-component';
 import { Helmet } from 'react-helmet';
 import Nav from '../components/Nav';
 import '../assets/css/globals.css';
-// import RedirectWithStatus from '../Components/RedirectStatus';
 import Loading from '../components/Loading';
-// import Home from '../views/Home'
 
 import MainRoutes from "./MainRoutes";
-
-// import UniversalComponent from '../shared/routeHelper';
-
-// import Loading from './my-loading-component';
-// import { SplitRoute } from "../../utils/routeHelper";
-
-// import Loader from 'commonComponents/Loader';
-
-// import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 export const SplitRoute = (props) => {
 	console.log('props =>',props)
