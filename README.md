@@ -89,4 +89,4 @@ Please [file an issue](https://github.com/Anishmprasad/react-ssr-starter-kit/iss
 License
 =======
 The MIT License (MIT)
-Copyright (c) 2018 Anish M Prasad
+Copyright (c) 2019 Anish M Prasad
