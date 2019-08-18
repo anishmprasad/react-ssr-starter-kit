@@ -40,9 +40,9 @@ function Nav(props) {
 }
 function mapStateToProps(state) {
 	console.log(state);
-	// const { first_name: firstName } = state.userInfo && state.userInfo.personal_details;
+	const { first_name: firstName } = state.userInfo && state.userInfo.personal_details;
 	return {
-		name: 'anish'
+		name: firstName
 	};
 }
 // function mapDispatchToProps(dispatch) {

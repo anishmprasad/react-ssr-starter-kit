@@ -1,5 +1,5 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 // import Header from "../Header";
 import Loadable from 'react-loadable';
 
@@ -9,21 +9,21 @@ import Nav from '../components/Nav';
 import '../assets/css/globals.css';
 import Loading from '../components/Loading';
 
-import MainRoutes from "./MainRoutes";
+import MainRoutes from './MainRoutes';
 
-export const SplitRoute = (props) => {
-	console.log('props =>',props)
-	const { component } = props
+export const SplitRoute = props => {
+	console.log('props =>', props);
+	const { component } = props;
 	const loadableComponent = Loadable({
 		loader: component,
 		loading: Loading
 	});
-	console.log('loadableComponent',loadableComponent)
+	console.log('loadableComponent', loadableComponent);
 	return <Route {...props} component={loadableComponent} />;
 };
 
 export const UniversalComponent = universal(props => import(`../views/${props.page}`), {
-	loading: () => <Loading />,
+	loading: () => <Loading />
 });
 
 // export default ({ lang }) => (
@@ -65,22 +65,24 @@ export const UniversalComponent = universal(props => import(`../views/${props.pa
 // 	</div>
 // );
 function Routes() {
-	return(
+	return (
 		<div>
 			<Helmet>
 				<link
-					rel="shortcut icon"
-					href="https://res.cloudinary.com/riangle/image/upload/v1531060402/favicon_zxkyaz.ico"
-					type="image/x-icon"
+					rel='shortcut icon'
+					href='https://res.cloudinary.com/riangle/image/upload/v1531060402/favicon_zxkyaz.ico'
+					type='image/x-icon'
 				/>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<title>Isomorphic React Starter Kit</title>
 			</Helmet>
 			<Nav />
 			<Switch>
-				{MainRoutes.map(route => <Route key={route.path} {...route} />)}
+				{MainRoutes.map(route => (
+					<Route key={route.path} {...route} />
+				))}
 			</Switch>
 		</div>
-	)
+	);
 }
 export default Routes;
