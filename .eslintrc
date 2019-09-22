@@ -1,24 +1,24 @@
 {
-  "extends": ["airbnb", "eslint:recommended"],
-  "env": {
-    "browser": true,
-    "jest": true
-  },
-  "plugins": ["react"],
-  "parser": "babel-eslint",
-  "rules": {
-    "react/prop-types": 0,
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ],
-    "no-tabs": 0,
-    "indent": [2, "tab"],
-    "react/jsx-indent": [2, "tab"],
-    "react/jsx-indent-props": [2, "tab"],
-    "max-len": ["error", { "code": 300 }],
-    "no-console":0
-  }
+	"extends": ["airbnb", "eslint:recommended"],
+	"env": {
+		"browser": true,
+		"jest": true
+	},
+	"plugins": ["react"],
+	"parser": "babel-eslint",
+	"rules": {
+		"react/prop-types": 0,
+		"react/jsx-filename-extension": [
+			1,
+			{
+				"extensions": [".js", ".jsx"]
+			}
+		],
+		"no-tabs": 0,
+		"indent": [2, "tab"],
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
+		"max-len": ["error", { "code": 300 }],
+		"no-console": 0
+	}
 }

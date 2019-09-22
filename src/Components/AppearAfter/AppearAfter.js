@@ -18,8 +18,8 @@ class AppearAfter extends Component {
 		return React.cloneElement(children, {
 			className: classNames(className, {
 				visible: isVisible,
-				hidden: !isVisible,
-			}),
+				hidden: !isVisible
+			})
 		});
 	}
 }

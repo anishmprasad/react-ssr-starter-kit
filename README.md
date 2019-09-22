@@ -1,63 +1,64 @@
 # react-ssr-starter-kit
 
-A starter kit for react serverside rendering applications 
+A starter kit for react serverside rendering applications
 
-Features
-========
-* Prerender Method { getInitialBeforeRender } on view components
-* ES6 Support
-* Redux Support
-* eslint Support
+# Features
 
-Packages Needed
-===============
-- Babel
-- React
-- Redux
-- Redux-thunk
-- Redux-Promise
-- PostCSS
-- Express
-- Hot Module Replacement
-- Code Splitting
-- Server Side Rendering
+-   Prerender Method { getInitialBeforeRender } on view components
+-   ES6 Support
+-   Redux Support
+-   eslint Support
 
-Install dependencies
-====================
+# Packages Needed
+
+-   Babel
+-   React
+-   Redux
+-   Redux-thunk
+-   Redux-Promise
+-   PostCSS
+-   Express
+-   Hot Module Replacement
+-   Code Splitting
+-   Server Side Rendering
+
+# Install dependencies
+
 ```
 > $ npm install
 ```
 
-Runs the app in the development mode
-====================================
+# Runs the app in the development mode
+
 Build and open your browser to http://localhost:8080.
+
 ```
 > $ npm run dev
 ```
 
-Builds and runs the app in production
-=====================================
+# Builds and runs the app in production
+
 ```
 > $ npm start
 ```
 
-Getting started
-===============
+# Getting started
 
 sample Home component for static declaration of data requirements
 
 ```jsx
-class Home extends Component { 
-		render() {
-			const { data, input } = this.props;
-			const { value } = this.state;
-			return (
-				<div>
-					<Helmet encodeSpecialCharacters>
-						<title>React ServerSideRendering • Home</title>
-					</Helmet>
-					<div className={styles.intro}>
-						{data && data.map((array) => {
+class Home extends Component {
+	render() {
+		const { data, input } = this.props;
+		const { value } = this.state;
+		return (
+			<div>
+				<Helmet encodeSpecialCharacters>
+					<title>React ServerSideRendering • Home</title>
+				</Helmet>
+				<div className={styles.intro}>
+					{data &&
+						data.map(array => {
 							return (
 								<div key={`array-${array.id}`}>
 									<h2>{array.title}</h2>
@@ -65,29 +66,31 @@ class Home extends Component {
 								</div>
 							);
 						})}
-					</div>
 				</div>
-			);
-		}
+			</div>
+		);
+	}
 }
 Home.getInitialBeforeRender = () => InitialAction(); // static declaration of data requirements
 function mapStateToProps(state) {
-	const { sample } = state.sampleReducer
+	const { sample } = state.sampleReducer;
 	return {
 		data: sample && sample.data
 	};
 }
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(
+	mapStateToProps,
+	null
+)(Home);
 ```
 
-Issues
-======
+# Issues
+
 Please [file an issue](https://github.com/Anishmprasad/react-ssr-starter-kit/issues) if you find a bug, or need help.
 
+# License
 
-License
-=======
 The MIT License (MIT)
 
 Copyright (c) 2019 Anish M Prasad

@@ -8,7 +8,7 @@ function Loading() {
 		<div>
 			<AppearAfter delay={300} className={styles.loading}>
 				<div>
-					<img src={logo} alt="Loading Logo" />
+					<img src={logo} alt='Loading Logo' />
 				</div>
 			</AppearAfter>
 		</div>

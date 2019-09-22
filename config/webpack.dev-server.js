@@ -12,7 +12,7 @@ module.exports = {
 		filename: 'dev-server-bundle.js',
 		chunkFilename: '[name].js',
 		path: path.resolve(__dirname, '../build'),
-		libraryTarget: 'commonjs2',
+		libraryTarget: 'commonjs2'
 	},
 	module: {
 		rules: [
@@ -21,9 +21,9 @@ module.exports = {
 				exclude: /node_modules/,
 				use: [
 					{
-						loader: 'babel-loader',
-					},
-				],
+						loader: 'babel-loader'
+					}
+				]
 			},
 			{
 				test: /\.css$/,
@@ -33,16 +33,16 @@ module.exports = {
 						options: {
 							modules: true,
 							localIdentName: '[name]__[local]--[hash:base64:5]',
-							minimize: true,
-						},
+							minimize: true
+						}
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
-							ident: 'postcss',
-						},
-					},
-				],
+							ident: 'postcss'
+						}
+					}
+				]
 			},
 			{
 				test: /\.(jpg|svg|png|gif)$/,
@@ -51,29 +51,29 @@ module.exports = {
 						loader: 'file-loader',
 						options: {
 							name: '/images/[name].[ext]',
-							emitFile: false,
-						},
-					},
-				],
+							emitFile: false
+						}
+					}
+				]
 			},
 			{
 				test: /\.md$/,
 				use: [
 					{
-						loader: 'markdown-with-front-matter-loader',
-					},
-				],
-			},
-		],
+						loader: 'markdown-with-front-matter-loader'
+					}
+				]
+			}
+		]
 	},
 	plugins: [
 		new webpack.optimize.LimitChunkCountPlugin({
-			maxChunks: 1,
+			maxChunks: 1
 		}),
 		new webpack.DefinePlugin({
 			'process.env': {
-				NODE_ENV: JSON.stringify('development'),
-			},
-		}),
-	],
+				NODE_ENV: JSON.stringify('development')
+			}
+		})
+	]
 };

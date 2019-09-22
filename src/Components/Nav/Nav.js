@@ -9,24 +9,29 @@ import logo from '../../assets/images/logo.svg';
 // } from '../../redux/actions/sampleAction';
 // import { fetchData } from '../../redux/store/store';
 
-
 function Nav(props) {
 	const { name } = props;
 	return (
 		<div className={styles.navigation}>
-			<Link to="/" className={styles.logo}>
-				<img src={logo} alt="Logo" />
+			<Link to='/' className={styles.logo}>
+				<img src={logo} alt='Logo' />
 				<span>React Serverside rendering</span>
 			</Link>
 			<ul className={styles.menu}>
 				<li>
-					<NavLink to="/about" activeClassName={styles.active}>About</NavLink>
+					<NavLink to='/about' activeClassName={styles.active}>
+						About
+					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/article" activeClassName={styles.active}>Article</NavLink>
+					<NavLink to='/article' activeClassName={styles.active}>
+						Article
+					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/profile" activeClassName={styles.active}>Profile</NavLink>
+					<NavLink to='/profile' activeClassName={styles.active}>
+						Profile
+					</NavLink>
 				</li>
 				<li>{name}</li>
 			</ul>
@@ -34,10 +39,10 @@ function Nav(props) {
 	);
 }
 function mapStateToProps(state) {
-	console.log('mapStateToProps',state)
+	console.log('mapStateToProps', state);
 	const { first_name: firstName } = state.userInfo && state.userInfo.personal_details;
 	return {
-		name: firstName,
+		name: firstName
 	};
 }
 // function mapDispatchToProps(dispatch) {
@@ -46,4 +51,7 @@ function mapStateToProps(state) {
 //     dispatch
 //   );
 // }
-export default connect(mapStateToProps, null)(Nav);
+export default connect(
+	mapStateToProps,
+	null
+)(Nav);
