@@ -10,13 +10,13 @@ module.exports = {
 	name: 'client',
 	entry: {
 		vendor: ['react', 'react-dom'],
-		main: ['./src/main.js'],
+		main: ['./src/main.js']
 	},
 	mode: 'production',
 	output: {
 		filename: '[name]-bundle.js',
 		path: path.resolve(__dirname, '../dist'),
-		publicPath: '/',
+		publicPath: '/'
 	},
 	optimization: {
 		splitChunks: {
@@ -24,10 +24,10 @@ module.exports = {
 				vendor: {
 					name: 'vendor',
 					chunks: 'initial',
-					minChunks: 2,
-				},
-			},
-		},
+					minChunks: 2
+				}
+			}
+		}
 	},
 	module: {
 		rules: [
@@ -36,9 +36,9 @@ module.exports = {
 				exclude: /node_modules/,
 				use: [
 					{
-						loader: 'babel-loader',
-					},
-				],
+						loader: 'babel-loader'
+					}
+				]
 			},
 			{
 				test: /\.css$/,
@@ -48,16 +48,16 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							modules: true,
-							localIdentName: '[hash:base64:5]',
-						},
+							localIdentName: '[hash:base64:5]'
+						}
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
-							ident: 'postcss',
-						},
-					},
-				],
+							ident: 'postcss'
+						}
+					}
+				]
 			},
 			{
 				test: /\.(jpg|svg|png|gif)$/,
@@ -65,42 +65,42 @@ module.exports = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: 'images/[name].[ext]',
-						},
-					},
-				],
+							name: 'images/[name].[ext]'
+						}
+					}
+				]
 			},
 			{
 				test: /\.md$/,
 				use: [
 					{
-						loader: 'markdown-with-front-matter-loader',
-					},
-				],
-			},
-		],
+						loader: 'markdown-with-front-matter-loader'
+					}
+				]
+			}
+		]
 	},
 	plugins: [
 		new ExtractCssChunks({
 			filename: '[name].css',
-			chunkFilename: '[name]-[hash:8].css',
+			chunkFilename: '[name]-[hash:8].css'
 		}),
 		new OptimizeCssAssetsPlugin({
 			assetNameRegExp: /\.css$/g,
 			cssProcessor: require('cssnano'),
 			cssProcessorOptions: { discardComments: { removeAll: true } },
-			canPrint: true,
+			canPrint: true
 		}),
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: JSON.stringify('production'),
-				WEBPACK: true,
-			},
+				WEBPACK: true
+			}
 		}),
 		new UglifyJSPlugin(),
 		new CompressionPlugin({
-			algorithm: 'gzip',
+			algorithm: 'gzip'
 		}),
-		new BrotliPlugin(),
-	],
+		new BrotliPlugin()
+	]
 };

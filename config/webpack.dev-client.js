@@ -10,15 +10,15 @@ module.exports = {
 			'react-hot-loader/patch',
 			'babel-runtime/regenerator',
 			'webpack-hot-middleware/client?reload=true',
-			'./src/main.js',
-		],
+			'./src/main.js'
+		]
 	},
 	mode: 'development',
 	output: {
 		filename: '[name]-bundle.js',
 		chunkFilename: '[name].js',
 		path: path.resolve(__dirname, '../dist'),
-		publicPath: '/',
+		publicPath: '/'
 	},
 	devtool: 'source-map',
 	module: {
@@ -28,9 +28,9 @@ module.exports = {
 				exclude: /node_modules/,
 				use: [
 					{
-						loader: 'babel-loader',
-					},
-				],
+						loader: 'babel-loader'
+					}
+				]
 			},
 			{
 				test: /\.css$/,
@@ -42,17 +42,17 @@ module.exports = {
 							modules: true,
 							localIdentName: '[name]__[local]--[hash:base64:5]',
 							importLoaders: 1,
-							sourceMap: true,
-						},
+							sourceMap: true
+						}
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
 							sourceMap: true,
-							ident: 'postcss',
-						},
-					},
-				],
+							ident: 'postcss'
+						}
+					}
+				]
 			},
 			{
 				test: /\.(jpg|svg|png|gif)$/,
@@ -60,33 +60,33 @@ module.exports = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: 'images/[name].[ext]',
-						},
-					},
-				],
+							name: 'images/[name].[ext]'
+						}
+					}
+				]
 			},
 			{
 				test: /\.md$/,
 				use: [
 					{
-						loader: 'markdown-with-front-matter-loader',
-					},
-				],
-			},
-		],
+						loader: 'markdown-with-front-matter-loader'
+					}
+				]
+			}
+		]
 	},
 	plugins: [
 		new ExtractCssChunks({
 			filename: '[name].css',
 			chunkFilename: '[name]-[hash:8].css',
-			hot: true,
+			hot: true
 		}),
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: JSON.stringify('development'),
-				WEBPACK: true,
-			},
+				WEBPACK: true
+			}
 		}),
-		new webpack.HotModuleReplacementPlugin(),
-	],
+		new webpack.HotModuleReplacementPlugin()
+	]
 };
