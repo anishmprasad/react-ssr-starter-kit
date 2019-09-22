@@ -21,7 +21,8 @@ export function inputUpdateAction(value) {
 }
 
 export function userInfoAction() {
-	const url = 'https://anishmprasad.com/sample.json';
+	// const url = 'https://anishmprasad.com/sample.json';
+	const url = 'https://api.myjson.com/bins/xurfd';
 	return function(dispatch) {
 		axios.get(url).then(response => {
 			dispatch(createActionWithTypeAndPayload(USERINFO, response));
