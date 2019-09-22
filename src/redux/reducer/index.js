@@ -4,7 +4,7 @@ import userInfo from './userInfo';
 
 const rootReducer = combineReducers({
 	sampleReducer,
-	userInfo,
+	userInfo
 });
 
 export default rootReducer;

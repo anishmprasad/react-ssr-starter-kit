@@ -14,7 +14,7 @@ function About() {
 			</Helmet>
 			<Content>
 				<div className={styles.profile}>
-					<img src={imagePath} alt="imagePath" />
+					<img src={imagePath} alt='imagePath' />
 					<h1 className={styles.title}>About</h1>
 					<div
 						className={styles.content}

@@ -21,10 +21,11 @@ const PORT = process.env.PORT || 8080;
 let isBuilt = false;
 
 const done = () => {
-	!isBuilt && server.listen(PORT, () => {
-		isBuilt = true;
-		console.log(`Server listening on http://localhost:${PORT} in ${process.env.NODE_ENV}`);
-	});
+	!isBuilt &&
+		server.listen(PORT, () => {
+			isBuilt = true;
+			console.log(`Server listening on http://localhost:${PORT} in ${process.env.NODE_ENV}`);
+		});
 };
 
 if (isDev) {
@@ -33,15 +34,9 @@ if (isDev) {
 	const clientCompiler = compiler.compilers[0];
 	// const serverCompiler = compiler.compilers[1];
 
-	const webpackDevMiddleware = require('webpack-dev-middleware')(
-		compiler,
-		configDevClient.devServer,
-	);
+	const webpackDevMiddleware = require('webpack-dev-middleware')(compiler, configDevClient.devServer);
 
-	const webpackHotMiddlware = require('webpack-hot-middleware')(
-		clientCompiler,
-		configDevClient.devServer,
-	);
+	const webpackHotMiddlware = require('webpack-hot-middleware')(clientCompiler, configDevClient.devServer);
 
 	server.use(webpackDevMiddleware);
 	server.use(webpackHotMiddlware);
@@ -53,13 +48,13 @@ if (isDev) {
 		const clientStats = stats.toJson().children[0];
 		console.log(
 			stats.toString({
-				colors: true,
-			}),
+				colors: true
+			})
 		);
 		server.use(
 			expressStaticGzip('dist', {
-				enableBrotli: true,
-			}),
+				enableBrotli: true
+			})
 		);
 		const render = require('../../build/prod-server-bundle.js').default;
 		server.use(render({ clientStats }));

@@ -14,8 +14,9 @@ export function fetchCircuits() {
 export function InitialAction() {
 	const url = 'https://anishmprasad.com/sample.json';
 	return function(dispatch) {
-		const initialAction = axios.get(url)
-			.then((response) => {
+		const initialAction = axios
+			.get(url)
+			.then(response => {
 				dispatch(createActionWithTypeAndPayload(INITIAL_DATA, response));
 				return Promise.resolve(response);
 			})

@@ -2,6 +2,6 @@ const createActionWithTypeAndPayload = (type, payload, meta, error) => ({
 	type,
 	payload,
 	meta,
-	error,
+	error
 });
 export default createActionWithTypeAndPayload;
