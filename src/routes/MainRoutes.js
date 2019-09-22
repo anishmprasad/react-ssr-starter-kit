@@ -5,6 +5,11 @@ import Profile from '../views/Profile';
 
 export default [
 	{
+		path: '/',
+		component: Home,
+		exact: true
+	},
+	{
 		path: '/home',
 		component: Home,
 		exact: true

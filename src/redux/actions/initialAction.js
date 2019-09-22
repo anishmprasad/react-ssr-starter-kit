@@ -6,13 +6,15 @@ import createActionWithTypeAndPayload from './commonAction';
 
 export function fetchCircuits() {
 	// http://ergast.com/api/f1/2018/circuits.json
-	return fetch('https://anishmprasad.com/sample.json')
+	const url = 'https://api.myjson.com/bins/xurfd';
+	return fetch(url)
 		.then(res => res.json())
 		.then(res => res);
 }
 
 export function InitialAction() {
-	const url = 'https://anishmprasad.com/sample.json';
+	// const url = 'https://anishmprasad.com/sample.json';
+	const url = 'https://api.myjson.com/bins/xurfd';
 	return function(dispatch) {
 		const initialAction = axios
 			.get(url)
