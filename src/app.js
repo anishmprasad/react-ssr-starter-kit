@@ -7,12 +7,11 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
 import reducers from './redux/reducer';
-import AppRoot from "./routes/AppRoot";
+import AppRoot from './routes/AppRoot';
 
 const NewAppRoot = require('./routes/AppRoot.js').default;
 
-
-const isBrowser = (typeof window !== 'undefined');
+const isBrowser = typeof window !== 'undefined';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.PRELOADED_STATE;
@@ -26,8 +25,8 @@ const store = createStore(
 	preloadedState,
 	compose(
 		applyMiddleware(thunk, ReduxPromise),
-		isBrowser && window.devToolsExtension ? window.devToolsExtension() : f => f,
-	),
+		isBrowser && window.devToolsExtension ? window.devToolsExtension() : f => f
+	)
 );
 
 function render(Component) {
@@ -37,14 +36,14 @@ function render(Component) {
 				<Component />
 			</Provider>
 		</AppContainer>,
-		document.getElementById('react-root'),
+		document.getElementById('react-root')
 	);
 }
 
 render(AppRoot);
 
 if (module.hot) {
-	module.hot.accept("./routes/AppRoot.js", () => {
+	module.hot.accept('./routes/AppRoot.js', () => {
 		render(NewAppRoot);
 	});
 }
