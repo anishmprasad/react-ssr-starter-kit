@@ -56,6 +56,7 @@ if (isDev) {
 				enableBrotli: true
 			})
 		);
+		// eslint-disable-next-line import/no-unresolved
 		const render = require('../../build/prod-server-bundle.js').default;
 		server.use(render({ clientStats }));
 		done();

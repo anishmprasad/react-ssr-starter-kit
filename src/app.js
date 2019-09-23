@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import ReduxPromise from 'redux-promise';
+// import ReduxPromise from 'redux-promise';
 import reducers from './redux/reducer';
 import AppRoot from './routes/AppRoot';
 
@@ -24,8 +24,8 @@ const store = createStore(
 	reducers,
 	preloadedState,
 	compose(
-		applyMiddleware(thunk, ReduxPromise),
-		isBrowser && window.devToolsExtension ? window.devToolsExtension() : f => f
+		applyMiddleware(thunk),
+		isBrowser && window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 	)
 );
 

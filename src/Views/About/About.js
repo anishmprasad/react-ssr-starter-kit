@@ -7,10 +7,11 @@ import styles from './About.css';
 const imagePath = require('../../assets/images/logo.svg');
 
 function About() {
+	console.log('About');
 	return (
 		<div>
 			<Helmet encodeSpecialCharacters>
-				<title>React SSR Boilerplate • About</title>
+				<title>React • About</title>
 			</Helmet>
 			<Content>
 				<div className={styles.profile}>

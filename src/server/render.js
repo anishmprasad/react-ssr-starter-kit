@@ -14,7 +14,8 @@ import guessLocale from '../client-locale/guessLocale';
 // import { createStore } from 'redux'
 
 import mainroutes from '../routes/MainRoutes';
-import Routes from '../routes/Routes';
+import reactRouterToArray from './routeHelper';
+import Router from '../routes/Routes';
 // import qs from 'qs' // Add this at the top of the file
 // import reducers from '../redux/reducer'
 // import devTools from 'remote-redux-devtools';
@@ -26,6 +27,8 @@ import Routes from '../routes/Routes';
 
 // import request from 'request';
 import createStore from '../redux/store/store';
+
+console.log(mainroutes);
 
 // import { InitialAction } from '../redux/actions/initialAction';
 
@@ -45,26 +48,31 @@ export default ({ clientStats }) => (req, res) => {
 
 	// Grab the initial state from our Redux store
 	const context = {};
-
-	const dataRequirements = mainroutes
+	const routes = Array.isArray(mainroutes) ? mainroutes : mainroutes();
+	console.log('reactRouterToArray', reactRouterToArray(routes), req.url);
+	const dataRequirements = reactRouterToArray(routes)
 		.filter(route => {
+			console.log(matchPath(req.url, route));
 			return matchPath(req.url, route);
 		}) // filter matching paths
 		.map(route => {
+			console.log(route.component);
 			return route.component;
 		}) // map to components
 		.filter(comp => {
-			return comp.getInitialBeforeRender;
+			if (comp.getInitialBeforeRender) return comp.getInitialBeforeRender;
+			return comp;
 		}) // check if components have data requirement
 		.map(comp => {
-			return store.dispatch(comp.getInitialBeforeRender());
+			if (comp.getInitialBeforeRender) return store.dispatch(comp.getInitialBeforeRender());
+			return Promise.resolve(comp);
 		}); // dispatch data requirement
-
+	console.log('dataRequirements', dataRequirements);
 	Promise.all(dataRequirements).then(() => {
 		const app = renderToString(
 			<Provider store={store}>
 				<StaticRouter location={req.url} context={context}>
-					<Routes context={context} lang={lang} />
+					<Router context={context} lang={lang} />
 				</StaticRouter>
 			</Provider>
 		);

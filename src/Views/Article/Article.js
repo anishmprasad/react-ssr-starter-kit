@@ -8,7 +8,7 @@ function Article() {
 	return (
 		<div>
 			<Helmet encodeSpecialCharacters>
-				<title>React SSR Boilerplate • Article</title>
+				<title>React • Article</title>
 			</Helmet>
 			<Content>
 				<div className={styles.article}>

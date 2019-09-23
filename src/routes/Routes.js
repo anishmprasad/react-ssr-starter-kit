@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+// import { Switch, Route } from 'react-router-dom';
 // import Header from "../Header";
 
 import { Helmet } from 'react-helmet';
@@ -8,9 +8,10 @@ import '../assets/css/globals.css';
 // import RedirectWithStatus from '../Components/RedirectStatus';
 // import Loading from '../Components/Loading';
 
-import MainRoutes from './MainRoutes';
+import Routes from './MainRoutes';
 
-function Routes() {
+function Router() {
+	console.log('Router');
 	return (
 		<div>
 			<Helmet>
@@ -24,15 +25,17 @@ function Routes() {
 			</Helmet>
 			<Nav />
 			{/* <h1>{this.state.title}</h1> */}
-			<Switch>
-				{MainRoutes.map(route => (
+			{/* <Switch> */}
+			<Routes />
+			{/* reactRouterToArray */}
+			{/* {MainRoutes.map(route => (
 					<Route key={route.path} {...route} />
-				))}
-				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
+				))} */}
+			{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
 				<Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
-			</Switch>
+			{/* </Switch> */}
 		</div>
 	);
 }
 // { routes.map( route => <Route key={ route.path } { ...route } /> ) }
-export default Routes;
+export default Router;

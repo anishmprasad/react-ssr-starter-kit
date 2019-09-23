@@ -1,32 +1,60 @@
+import React from 'react';
+import { Route, Switch, Router } from 'react-router';
+// import { Switch, Route } from 'react-router-dom';
+
 import Home from '../views/Home';
 import About from '../views/About';
 import Article from '../views/Article';
 import Profile from '../views/Profile';
 
-export default [
-	{
-		path: '/',
-		component: Home,
-		exact: true
-	},
-	{
-		path: '/home',
-		component: Home,
-		exact: true
-	},
-	{
-		path: '/about',
-		component: About,
-		exact: true
-	},
-	{
-		path: '/article',
-		component: Article,
-		exact: true
-	},
-	{
-		path: '/profile',
-		component: Profile,
-		exact: true
-	}
-];
+// import reactRouterToArray from './RouteHelper';
+
+// export default [
+// 	{
+// 		path: '/',
+// 		component: Home,
+// 		exact: true
+// 	},
+// 	{
+// 		path: '/home',
+// 		component: Home,
+// 		exact: true
+// 	},
+// 	{
+// 		path: '/about',
+// 		component: About,
+// 		exact: true
+// 	},
+// 	{
+// 		path: '/article',
+// 		component: Article,
+// 		exact: true
+// 	},
+// 	{
+// 		path: '/profile',
+// 		component: Profile,
+// 		exact: true
+// 	}
+// ];
+
+// const outerToArray = reactRouterToArray(
+// 	<Switch>
+// 		<Route path='/' component={Home} />
+// 		<Route path='about' component={About} />
+// 		<Route path='users' component={Article} />
+// 		<Route path='profile' component={Profile} />
+// 	</Switch>
+// );
+
+const Routes = () => {
+	return (
+		<Switch>
+			<Route path='/' component={Home} exact />
+			<Route path='/about' component={About} exact />
+			<Route path='/users' component={Article} exact />
+			<Route path='/profile' component={Profile} exact />
+		</Switch>
+	);
+};
+
+export default Routes;
