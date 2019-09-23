@@ -36,7 +36,7 @@ function render(Component) {
 				<Component />
 			</Provider>
 		</AppContainer>,
-		document.getElementById('react-root')
+		document.getElementById('root')
 	);
 }
 

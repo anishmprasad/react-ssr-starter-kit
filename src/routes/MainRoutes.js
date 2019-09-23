@@ -7,6 +7,9 @@ import About from '../views/About';
 import Article from '../views/Article';
 import Profile from '../views/Profile';
 
+console.log({ About });
+console.log({ Home });
+
 // import reactRouterToArray from './RouteHelper';
 
 // export default [
@@ -47,6 +50,7 @@ import Profile from '../views/Profile';
 // );
 
 const Routes = () => {
+	console.log('Routes');
 	return (
 		<Switch>
 			<Route path='/' component={Home} exact />

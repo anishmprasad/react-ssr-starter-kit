@@ -33,15 +33,6 @@ console.log(mainroutes);
 // import { InitialAction } from '../redux/actions/initialAction';
 
 export default ({ clientStats }) => (req, res) => {
-	const userLocales = extractLocalesFromReq(req);
-	let lang = guessLocale(['de', 'en'], userLocales, 'en');
-
-	if (req.originalUrl.substr(1, 2) === 'de') {
-		lang = 'de';
-	}
-	if (req.originalUrl.substr(1, 2) === 'en') {
-		lang = 'en';
-	}
 	const store = createStore();
 
 	// store.dispatch(initializeSession());
@@ -56,10 +47,11 @@ export default ({ clientStats }) => (req, res) => {
 			return matchPath(req.url, route);
 		}) // filter matching paths
 		.map(route => {
-			console.log(route.component);
+			console.log('component', route.component);
 			return route.component;
 		}) // map to components
 		.filter(comp => {
+			console.log('getInitialBeforeRender', comp.getInitialBeforeRender);
 			if (comp.getInitialBeforeRender) return comp.getInitialBeforeRender;
 			return comp;
 		}) // check if components have data requirement
@@ -69,14 +61,16 @@ export default ({ clientStats }) => (req, res) => {
 		}); // dispatch data requirement
 	console.log('dataRequirements', dataRequirements);
 	Promise.all(dataRequirements).then(() => {
+		console.log('promise completed');
 		const app = renderToString(
 			<Provider store={store}>
 				<StaticRouter location={req.url} context={context}>
-					<Router context={context} lang={lang} />
+					<Router context={context} />
 				</StaticRouter>
 			</Provider>
 		);
 
+		console.log('app', app);
 		const preloadedState = store.getState();
 		const helmet = Helmet.renderStatic();
 
@@ -98,7 +92,7 @@ export default ({ clientStats }) => (req, res) => {
 		res.status(status).send(
 			`<!doctype html><html><head>${styles}${
 				helmet.title
-			}${helmet.meta.toString()}${helmet.link.toString()}</head><body><div id="react-root">${app}</div>${js}${cssHash}</body><script>window.PRELOADED_STATE = ${JSON.stringify(
+			}${helmet.meta.toString()}${helmet.link.toString()}</head><body><div id="root">${app}</div>${js}${cssHash}</body><script>window.PRELOADED_STATE = ${JSON.stringify(
 				preloadedState
 			).replace(/</g, '\\u003c')}</script></html>`
 		);

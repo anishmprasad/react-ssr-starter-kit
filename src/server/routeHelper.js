@@ -4,7 +4,9 @@ function extractChildRoutes(route, prefix) {
 	if (childRoutes) {
 		if (Array.isArray(childRoutes)) {
 			childRoutes.forEach(r => {
-				paths = paths.concat(extractRoute(r, prefix));
+				paths.push({
+					...r.props
+				});
 			});
 		} else {
 			paths = paths.concat(extractRoute(childRoutes, prefix));
@@ -48,13 +50,12 @@ export default route => {
 			});
 		});
 	} else {
-		route.props.children.forEach(rout => {
-			paths.push({
-				...rout.props
-			});
-		});
-
-		// paths = paths.concat(extractRoute(route));
+		// route.props.children.forEach(rout => {
+		// 	paths.push({
+		// 		...rout.props
+		// 	});
+		// });
+		paths = paths.concat(extractRoute(route));
 	}
 	console.log(extractRoute(route));
 	return paths;

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 // import { bindActionCreators } from "redux";
 import styles from './Nav.css';
 import logo from '../../assets/images/logo.svg';
+import { InitialAction } from '../../redux/actions/initialAction';
+
 // import {
 //   userInfoAction
 // } from '../../redux/actions/sampleAction';
@@ -38,6 +40,8 @@ function Nav(props) {
 		</div>
 	);
 }
+// Nav.getInitialBeforeRender = () => InitialAction();
+
 function mapStateToProps(state) {
 	console.log('mapStateToProps', state);
 	const { first_name: firstName } = state.userInfo && state.userInfo.personal_details;

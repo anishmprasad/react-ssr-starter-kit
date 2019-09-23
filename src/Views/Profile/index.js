@@ -2,6 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Content from '../../components/Content';
 import styles from './Profile.css';
+import { InitialAction } from '../../redux/actions/initialAction';
+
 // const MarkdownData = require('../../../data/post.md');
 const imagePath = require('../../assets/images/logo.svg');
 
@@ -15,11 +17,13 @@ function Profile() {
 				<div className='image-path'>
 					<img src={imagePath} alt='imagepath' />
 					<h1 className='anish'>Anish</h1>
-					<div className={styles.content}>{'Anish Description'}</div>
+					<div className={styles.content}>Anish Description</div>
 				</div>
 			</Content>
 		</div>
 	);
 }
+
+Profile.getInitialBeforeRender = () => InitialAction();
 
 export default Profile;
