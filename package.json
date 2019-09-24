@@ -81,7 +81,6 @@
 		"eslint-plugin-react": "^7.11.1",
 		"express": "^4.16.3",
 		"friendly-errors-webpack-plugin": "^1.6.1",
-		"husky": "^3.0.5",
 		"import": "0.0.6",
 		"jest": "^24.9.0",
 		"mini-css-extract-plugin": "^0.4.2",
