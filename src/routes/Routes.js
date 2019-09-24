@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 // import Header from "../Header";
 
 import { Helmet } from 'react-helmet';
@@ -25,15 +25,14 @@ function Router() {
 			</Helmet>
 			<Nav />
 			{/* <h1>{this.state.title}</h1> */}
-			{/* <Switch> */}
-			<Routes />
-			{/* reactRouterToArray */}
-			{/* {MainRoutes.map(route => (
+			<Switch>
+				{/* <Routes /> */}
+				{Routes.map(route => (
 					<Route key={route.path} {...route} />
-				))} */}
-			{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
+				))}
+				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
 				<Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
-			{/* </Switch> */}
+			</Switch>
 		</div>
 	);
 }

@@ -32,7 +32,7 @@ class Home extends Component {
 					<title>React ServerSideRendering • Home</title>
 				</Helmet>
 				<div className={styles.intro}>
-					<h1 className={styles.title}>Anish Corporation</h1>
+					<h1 className={styles.title}>Title</h1>
 					<input type='text' value={value} onChange={this.handleChange} />
 					<div className='input-value'>{input}</div>
 					{data &&

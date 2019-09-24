@@ -10,9 +10,28 @@ module.exports = {
 	mode: 'development',
 	output: {
 		filename: 'dev-server-bundle.js',
-		chunkFilename: '[name].js',
+		chunkFilename: '[name].chunk.js',
 		path: path.resolve(__dirname, '../build'),
 		libraryTarget: 'commonjs2'
+	},
+	optimization: {
+		splitChunks: {
+			name: false,
+			cacheGroups: {
+				vendors: {
+					name: 'vendors',
+					test: /[\\/]node_modules[\\/]/,
+					chunks: 'all',
+					minChunks: 1,
+					priority: -10
+				},
+				default: {
+					minChunks: 2,
+					priority: -20,
+					reuseExistingChunk: true
+				}
+			}
+		}
 	},
 	module: {
 		rules: [

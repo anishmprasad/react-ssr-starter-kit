@@ -10,13 +10,9 @@ export default class extends Component {
 	}
 
 	render() {
-		const { pathname } = window.location;
-		const isEn = pathname.substr(1, 2) === 'en' && 'en';
-		const isDe = pathname.substr(1, 2) === 'de' && 'de';
-		const currentLang = isEn || isDe || 'en';
 		return (
 			<Router>
-				<Routes lang={navigator && currentLang} />
+				<Routes />
 			</Router>
 		);
 	}

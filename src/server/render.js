@@ -42,20 +42,20 @@ export default ({ clientStats }) => (req, res) => {
 	const routes = Array.isArray(mainroutes) ? mainroutes : mainroutes();
 	console.log('reactRouterToArray', reactRouterToArray(routes), req.url);
 	const dataRequirements = reactRouterToArray(routes)
-		.filter(route => {
+		.filter((route) => {
 			console.log(matchPath(req.url, route));
 			return matchPath(req.url, route);
 		}) // filter matching paths
-		.map(route => {
+		.map((route) => {
 			console.log('component', route.component);
 			return route.component;
 		}) // map to components
-		.filter(comp => {
+		.filter((comp) => {
 			console.log('getInitialBeforeRender', comp.getInitialBeforeRender);
 			if (comp.getInitialBeforeRender) return comp.getInitialBeforeRender;
 			return comp;
 		}) // check if components have data requirement
-		.map(comp => {
+		.map((comp) => {
 			if (comp.getInitialBeforeRender) return store.dispatch(comp.getInitialBeforeRender());
 			return Promise.resolve(comp);
 		}); // dispatch data requirement
@@ -67,7 +67,7 @@ export default ({ clientStats }) => (req, res) => {
 				<StaticRouter location={req.url} context={context}>
 					<Router context={context} />
 				</StaticRouter>
-			</Provider>
+			</Provider>,
 		);
 
 		console.log('app', app);
@@ -75,7 +75,7 @@ export default ({ clientStats }) => (req, res) => {
 		const helmet = Helmet.renderStatic();
 
 		const { js, styles, cssHash } = flushChunks(clientStats, {
-			chunkNames: flushChunkNames()
+			chunkNames: flushChunkNames(),
 		});
 
 		const status = context.status || 200;
@@ -93,8 +93,8 @@ export default ({ clientStats }) => (req, res) => {
 			`<!doctype html><html><head>${styles}${
 				helmet.title
 			}${helmet.meta.toString()}${helmet.link.toString()}</head><body><div id="root">${app}</div>${js}${cssHash}</body><script>window.PRELOADED_STATE = ${JSON.stringify(
-				preloadedState
-			).replace(/</g, '\\u003c')}</script></html>`
+				preloadedState,
+			).replace(/</g, '\\u003c')}</script></html>`,
 		);
 	});
 };
