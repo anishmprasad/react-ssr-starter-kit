@@ -45,7 +45,7 @@ function Nav(props) {
 // Nav.getInitialBeforeRender = () => InitialAction();
 
 function mapStateToProps(state) {
-	console.log('mapStateToProps', state);
+	// console.log('mapStateToProps', state);
 	const { first_name: firstName } = state.userInfo && state.userInfo.personal_details;
 	return {
 		name: firstName

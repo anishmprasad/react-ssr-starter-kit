@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+// import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -32,11 +32,11 @@ const store = createStore(
 
 function render(Component) {
 	ReactDOM.hydrate(
-		<AppContainer>
-			<Provider store={store}>
-				<Component />
-			</Provider>
-		</AppContainer>,
+		// <AppContainer>
+		<Provider store={store}>
+			<Component />
+		</Provider>,
+		// </AppContainer>,
 		document.getElementById('root')
 	);
 }
