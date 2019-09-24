@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import Content from '../../Components/Content';
+
 import styles from './Home.css';
-// import { t } from '../../Components/Languages';
+
 import { sampleAction, inputUpdateAction, userInfoAction } from '../../redux/actions/sampleAction';
 import { InitialAction } from '../../redux/actions/initialAction';
 /* eslint-disable */
@@ -22,8 +22,6 @@ class Home extends Component {
 	};
 	static getInitialBeforeRender = () => InitialAction();
 	render() {
-		debugger;
-		console.log('home');
 		const { data, input } = this.props;
 		const { value } = this.state;
 		return (

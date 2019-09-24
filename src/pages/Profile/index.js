@@ -4,7 +4,6 @@ import Content from '../../components/Content';
 import styles from './Profile.css';
 import { InitialAction } from '../../redux/actions/initialAction';
 
-// const MarkdownData = require('../../../data/post.md');
 const imagePath = require('../../assets/images/logo.svg');
 
 function Profile() {

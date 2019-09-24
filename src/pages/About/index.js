@@ -9,8 +9,6 @@ const imagePath = require('../../assets/images/logo.svg');
 
 /* eslint-disable */
 function About() {
-	debugger;
-	console.log('About');
 	return (
 		<div>
 			<Helmet encodeSpecialCharacters>

@@ -26,9 +26,8 @@ function extractRoute(route, prefix) {
 			});
 
 			return paths;
-		} else {
-			return extractChildRoutes(route, prefix);
 		}
+		return extractChildRoutes(route, prefix);
 	}
 	const currentPath = `${prefix || ''}${path}`.replace(/\/+/g, '/');
 

@@ -10,7 +10,7 @@ module.exports = {
 			'react-hot-loader/patch',
 			'babel-runtime/regenerator',
 			'webpack-hot-middleware/client?reload=true',
-			'./src/main.js'
+			'./src/app.js'
 		]
 	},
 	mode: 'development',
@@ -19,25 +19,6 @@ module.exports = {
 		chunkFilename: '[name].chunk.js',
 		path: path.resolve(__dirname, '../dist'),
 		publicPath: '/'
-	},
-	optimization: {
-		splitChunks: {
-			name: false,
-			cacheGroups: {
-				vendors: {
-					name: 'vendors',
-					test: /[\\/]node_modules[\\/]/,
-					chunks: 'all',
-					minChunks: 1,
-					priority: -10
-				},
-				default: {
-					minChunks: 2,
-					priority: -20,
-					reuseExistingChunk: true
-				}
-			}
-		}
 	},
 	devtool: 'source-map',
 	module: {

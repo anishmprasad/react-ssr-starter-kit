@@ -1,4 +1,4 @@
-// import React from 'react';
+import React, { lazy } from 'react';
 // import { Route, Switch, Router } from 'react-router';
 // import { Switch, Route } from 'react-router-dom';
 
@@ -6,6 +6,11 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Article from '../pages/Article';
 import Profile from '../pages/Profile';
+
+// const Home = lazy(() => import(/* webpackChunkName: 'Home' */ '../pages/Home'));
+// const About = lazy(() => import(/* webpackChunkName: 'About' */ '../pages/About'));
+// const Article = lazy(() => import(/* webpackChunkName: 'Article' */ '../pages/Article'));
+// const Profile = lazy(() => import(/* webpackChunkName: 'Profile' */ '../pages/Profile'));
 
 // console.log({ About });
 // console.log({ Home });

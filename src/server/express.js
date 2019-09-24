@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable no-unused-expressions */
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import webpack from 'webpack';
@@ -12,12 +14,9 @@ server.use(cookieParser());
 
 const expressStaticGzip = require('express-static-gzip');
 
-// import { createStore } from 'redux'
-// import { Provider } from 'react-redux'
-
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8080;
 let isBuilt = false;
 
 const done = () => {

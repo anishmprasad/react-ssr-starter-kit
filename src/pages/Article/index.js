@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Content from '../../components/Content';
-import data from '../../../data/bio';
 import styles from './index.css';
 import { InitialAction } from '../../redux/actions/initialAction';
 
@@ -14,7 +13,7 @@ function Article() {
 			<Content>
 				<div className={styles.article}>
 					<h1 className={styles.title}>Article</h1>
-					<div>{data}</div>
+					<div>{'data'}</div>
 				</div>
 			</Content>
 		</div>
