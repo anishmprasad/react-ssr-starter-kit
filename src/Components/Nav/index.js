@@ -35,7 +35,9 @@ function Nav(props) {
 						Profile
 					</NavLink>
 				</li>
-				<li>{name}</li>
+				<li>
+					<a>{name}</a>
+				</li>
 			</ul>
 		</div>
 	);
