@@ -40,7 +40,6 @@ function extractRoute(route, prefix) {
 
 export default route => {
 	let paths = [];
-	console.log(route);
 	if (Array.isArray(route)) {
 		route.forEach(r => {
 			paths.push({

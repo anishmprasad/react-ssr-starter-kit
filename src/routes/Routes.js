@@ -24,7 +24,6 @@ function Router() {
 				<title>Isomorphic React Starter Kit</title>
 			</Helmet>
 			{/* <Nav /> */}
-			{/* <h1>{this.state.title}</h1> */}
 			<Switch>
 				{/* <Routes /> */}
 				{Routes.map((route, index) => (
@@ -50,5 +49,4 @@ function Router() {
 		</div>
 	);
 }
-// { routes.map( route => <Route key={ route.path } { ...route } /> ) }
 export default Router;

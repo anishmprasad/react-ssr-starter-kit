@@ -57,7 +57,6 @@ export default ({ clientStats }) => (req, res) => {
 			</Provider>
 		);
 
-		console.log('app', app);
 		const preloadedState = store.getState();
 		const helmet = Helmet.renderStatic();
 
