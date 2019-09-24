@@ -7,6 +7,8 @@ import About from '../pages/About';
 import Article from '../pages/Article';
 import Profile from '../pages/Profile';
 
+import { DefaultLayout } from '../layout';
+
 // const Home = lazy(() => import(/* webpackChunkName: 'Home' */ '../pages/Home'));
 // const About = lazy(() => import(/* webpackChunkName: 'About' */ '../pages/About'));
 // const Article = lazy(() => import(/* webpackChunkName: 'Article' */ '../pages/Article'));
@@ -21,27 +23,32 @@ export default [
 	{
 		path: '/',
 		component: Home,
-		exact: true
+		exact: true,
+		layout: DefaultLayout
 	},
 	{
 		path: '/home',
 		component: Home,
-		exact: true
+		exact: true,
+		layout: DefaultLayout
 	},
 	{
 		path: '/about',
 		component: About,
-		exact: true
+		exact: true,
+		layout: DefaultLayout
 	},
 	{
 		path: '/article',
 		component: Article,
-		exact: true
+		exact: true,
+		layout: DefaultLayout
 	},
 	{
 		path: '/profile',
 		component: Profile,
-		exact: true
+		exact: true,
+		layout: DefaultLayout
 	}
 ];
 

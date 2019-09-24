@@ -23,13 +23,27 @@ function Router() {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<title>Isomorphic React Starter Kit</title>
 			</Helmet>
-			<Nav />
+			{/* <Nav /> */}
 			{/* <h1>{this.state.title}</h1> */}
 			<Switch>
 				{/* <Routes /> */}
-				{Routes.map(route => (
-					<Route key={route.path} {...route} />
+				{Routes.map((route, index) => (
+					<Route
+						key={index}
+						path={route.path}
+						exact={route.exact}
+						component={props => {
+							return (
+								<route.layout {...props}>
+									<route.component {...props} />
+								</route.layout>
+							);
+						}}
+					/>
 				))}
+				{/* {Routes.map(route => (
+					<Route key={route.path} {...route} />
+				))} */}
 				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
 				<Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
 			</Switch>
