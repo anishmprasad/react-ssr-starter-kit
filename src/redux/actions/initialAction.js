@@ -1,16 +1,7 @@
-import fetch from 'isomorphic-fetch';
 import axios from 'axios';
 
 import { INITIAL_DATA } from '../actionTypes/userInfo';
 import createActionWithTypeAndPayload from './commonAction';
-
-export function fetchCircuits() {
-	// http://ergast.com/api/f1/2018/circuits.json
-	const url = 'https://api.myjson.com/bins/xurfd';
-	return fetch(url)
-		.then(res => res.json())
-		.then(res => res);
-}
 
 export function InitialAction() {
 	// const url = 'https://anishmprasad.com/sample.json';

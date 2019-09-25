@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import Content from '../../Components/Content';
+
 import styles from './Home.css';
-// import { t } from '../../Components/Languages';
+
 import { sampleAction, inputUpdateAction, userInfoAction } from '../../redux/actions/sampleAction';
 import { InitialAction } from '../../redux/actions/initialAction';
-
+/* eslint-disable */
 class Home extends Component {
 	state = { value: '' };
-	componentWillMount() {
+	componentDidMount() {
 		const { sampleAction } = this.props;
 		sampleAction();
 	}
@@ -20,9 +20,8 @@ class Home extends Component {
 		this.setState({ value: event.target.value });
 		inputUpdateAction(event.target.value);
 	};
-
+	static getInitialBeforeRender = () => InitialAction();
 	render() {
-		console.log('home');
 		const { data, input } = this.props;
 		const { value } = this.state;
 		return (
@@ -31,7 +30,7 @@ class Home extends Component {
 					<title>React ServerSideRendering • Home</title>
 				</Helmet>
 				<div className={styles.intro}>
-					<h1 className={styles.title}>Anish Corporation</h1>
+					<h1 className={styles.title}>Title</h1>
 					<input type='text' value={value} onChange={this.handleChange} />
 					<div className='input-value'>{input}</div>
 					{data &&
@@ -48,7 +47,7 @@ class Home extends Component {
 		);
 	}
 }
-Home.getInitialBeforeRender = () => InitialAction();
+
 function mapStateToProps(state) {
 	const { input, sample } = state.sampleReducer;
 	return {

@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable no-unused-expressions */
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import webpack from 'webpack';
@@ -11,9 +13,6 @@ const server = express();
 server.use(cookieParser());
 
 const expressStaticGzip = require('express-static-gzip');
-
-// import { createStore } from 'redux'
-// import { Provider } from 'react-redux'
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
@@ -56,6 +55,7 @@ if (isDev) {
 				enableBrotli: true
 			})
 		);
+		// eslint-disable-next-line import/no-unresolved
 		const render = require('../../build/prod-server-bundle.js').default;
 		server.use(render({ clientStats }));
 		done();

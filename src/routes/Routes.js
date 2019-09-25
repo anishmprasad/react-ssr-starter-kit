@@ -8,9 +8,10 @@ import '../assets/css/globals.css';
 // import RedirectWithStatus from '../Components/RedirectStatus';
 // import Loading from '../Components/Loading';
 
-import MainRoutes from './MainRoutes';
+import Routes from './MainRoutes';
 
-function Routes() {
+function Router() {
+	console.log('Router');
 	return (
 		<div>
 			<Helmet>
@@ -22,17 +23,30 @@ function Routes() {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<title>Isomorphic React Starter Kit</title>
 			</Helmet>
-			<Nav />
-			{/* <h1>{this.state.title}</h1> */}
+			{/* <Nav /> */}
 			<Switch>
-				{MainRoutes.map(route => (
-					<Route key={route.path} {...route} />
+				{/* <Routes /> */}
+				{Routes.map((route, index) => (
+					<Route
+						key={index}
+						path={route.path}
+						exact={route.exact}
+						component={props => {
+							return (
+								<route.layout {...props}>
+									<route.component {...props} />
+								</route.layout>
+							);
+						}}
+					/>
 				))}
+				{/* {Routes.map(route => (
+					<Route key={route.path} {...route} />
+				))} */}
 				{/* <RedirectWithStatus status={301} exact from="/" to={`/${lang}`} />
 				<Route render={routeProps => <UniversalComponent page="NotFound" {...routeProps} />} /> */}
 			</Switch>
 		</div>
 	);
 }
-// { routes.map( route => <Route key={ route.path } { ...route } /> ) }
-export default Routes;
+export default Router;

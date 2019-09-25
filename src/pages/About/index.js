@@ -2,15 +2,17 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Content from '../../components/Content';
 // const MarkdownData = require('../../../data/post.md');
-import styles from './About.css';
+import styles from './index.css';
+import { InitialAction } from '../../redux/actions/initialAction';
 
 const imagePath = require('../../assets/images/logo.svg');
 
+/* eslint-disable */
 function About() {
 	return (
 		<div>
 			<Helmet encodeSpecialCharacters>
-				<title>React SSR Boilerplate • About</title>
+				<title>React • About</title>
 			</Helmet>
 			<Content>
 				<div className={styles.profile}>
@@ -25,5 +27,5 @@ function About() {
 		</div>
 	);
 }
-
+About.getInitialBeforeRender = () => InitialAction();
 export default About;

@@ -10,13 +10,13 @@ module.exports = {
 			'react-hot-loader/patch',
 			'babel-runtime/regenerator',
 			'webpack-hot-middleware/client?reload=true',
-			'./src/main.js'
+			'./src/app.js'
 		]
 	},
 	mode: 'development',
 	output: {
 		filename: '[name]-bundle.js',
-		chunkFilename: '[name].js',
+		chunkFilename: '[name].chunk.js',
 		path: path.resolve(__dirname, '../dist'),
 		publicPath: '/'
 	},

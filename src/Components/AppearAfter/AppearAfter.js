@@ -7,7 +7,7 @@ class AppearAfter extends Component {
 	// 	this.state = { isVisible: false };
 	// }
 	state = { isVisible: false };
-	componentWillMount() {
+	componentDidMount() {
 		const { delay } = this.props;
 		setTimeout(() => this.setState({ isVisible: true }), delay || 0);
 	}

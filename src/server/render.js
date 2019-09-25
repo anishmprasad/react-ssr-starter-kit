@@ -8,16 +8,10 @@ import { Provider } from 'react-redux';
 import { flushChunkNames } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 import { matchPath } from 'react-router-dom';
-import extractLocalesFromReq from '../client-locale/extractLocalesFromReq';
-import guessLocale from '../client-locale/guessLocale';
 
-// import { createStore } from 'redux'
-
-import mainroutes from '../routes/MainRoutes';
-import Routes from '../routes/Routes';
-// import qs from 'qs' // Add this at the top of the file
-// import reducers from '../redux/reducer'
-// import devTools from 'remote-redux-devtools';
+import topLevelRoutes from '../routes/MainRoutes';
+import reactRouterToArray from './routeHelper';
+import Router from '../routes/Routes';
 
 // import { applyMiddleware, compose } from 'redux';
 // import thunk from 'redux-thunk';
@@ -30,41 +24,35 @@ import createStore from '../redux/store/store';
 // import { InitialAction } from '../redux/actions/initialAction';
 
 export default ({ clientStats }) => (req, res) => {
-	const userLocales = extractLocalesFromReq(req);
-	let lang = guessLocale(['de', 'en'], userLocales, 'en');
-
-	if (req.originalUrl.substr(1, 2) === 'de') {
-		lang = 'de';
-	}
-	if (req.originalUrl.substr(1, 2) === 'en') {
-		lang = 'en';
-	}
 	const store = createStore();
 
 	// store.dispatch(initializeSession());
 
 	// Grab the initial state from our Redux store
 	const context = {};
-
-	const dataRequirements = mainroutes
+	const routes = topLevelRoutes;
+	// console.log('reactRouterToArray', reactRouterToArray(routes), req.url);
+	const dataRequirements = routes
 		.filter(route => {
+			console.log(matchPath(req.url, route));
 			return matchPath(req.url, route);
 		}) // filter matching paths
 		.map(route => {
 			return route.component;
 		}) // map to components
-		.filter(comp => {
-			return comp.getInitialBeforeRender;
+		.filter(component => {
+			if (component.getInitialBeforeRender) return component.getInitialBeforeRender;
+			return component;
 		}) // check if components have data requirement
-		.map(comp => {
-			return store.dispatch(comp.getInitialBeforeRender());
+		.map(component => {
+			if (component.getInitialBeforeRender) return store.dispatch(component.getInitialBeforeRender());
+			return Promise.resolve(component);
 		}); // dispatch data requirement
-
 	Promise.all(dataRequirements).then(() => {
 		const app = renderToString(
 			<Provider store={store}>
 				<StaticRouter location={req.url} context={context}>
-					<Routes context={context} lang={lang} />
+					<Router context={context} />
 				</StaticRouter>
 			</Provider>
 		);
@@ -90,7 +78,7 @@ export default ({ clientStats }) => (req, res) => {
 		res.status(status).send(
 			`<!doctype html><html><head>${styles}${
 				helmet.title
-			}${helmet.meta.toString()}${helmet.link.toString()}</head><body><div id="react-root">${app}</div>${js}${cssHash}</body><script>window.PRELOADED_STATE = ${JSON.stringify(
+			}${helmet.meta.toString()}${helmet.link.toString()}</head><body><div id="root">${app}</div>${js}${cssHash}</body><script>window.PRELOADED_STATE = ${JSON.stringify(
 				preloadedState
 			).replace(/</g, '\\u003c')}</script></html>`
 		);
