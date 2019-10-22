@@ -33,13 +33,13 @@ A starter kit for react serverside rendering applications
 Build and open your browser to http://localhost:8080.
 
 ```
-> $ npm run dev
+> $ npm start
 ```
 
 # Builds and runs the app in production
 
 ```
-> $ npm start
+> $ npm run build
 ```
 
 # Getting started

@@ -1,6 +1,6 @@
 {
 	"name": "react-ssr-starter-kit",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"main": "app.js",
 	"description": "A starter kit for react serverside rendering applications.",
 	"repository": "",
@@ -94,8 +94,8 @@
 		"webpack-dev-server": "^3.0.0"
 	},
 	"scripts": {
-		"prod": "NODE_ENV=production node src/server/main.js",
-		"dev": "NODE_ENV=development nodemon --watch src/server --watch config --inspect src/server/main.js",
+		"build": "NODE_ENV=production node src/server/main.js",
+		"start": "NODE_ENV=development nodemon --watch src/server --watch config --inspect src/server/main.js",
 		"linter": "eslint src",
 		"precommit": "eslint src --quiet"
 	}
