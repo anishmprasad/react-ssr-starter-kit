@@ -2,14 +2,14 @@
 
 const translationsDe = {
 	language: {
-		title: 'Eine minimale React-Kesselplatte mit serverseitigem Rendering.',
-	},
+		title: 'Eine minimale React-Kesselplatte mit serverseitigem Rendering.'
+	}
 };
 
 const translationsEn = {
 	language: {
-		title: 'A minimal React boilerplate with Server side rendering.',
-	},
+		title: 'A minimal React boilerplate with Server side rendering.'
+	}
 };
 
 const t = (lang, key, params) => {
@@ -21,7 +21,7 @@ const t = (lang, key, params) => {
 	}
 
 	if (params) {
-		return translation.replace(/\$\{\w+\}/g, (match) => {
+		return translation.replace(/\$\{\w+\}/g, match => {
 			const param = match.substring(2, match.length - 1);
 			return params[param] || match;
 		});
