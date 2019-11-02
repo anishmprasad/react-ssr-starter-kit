@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from "redux";
-import styles from './Nav.css';
+import styles from './index.css';
 import logo from '../../assets/images/logo.svg';
 import { InitialAction } from '../../redux/actions/initialAction';
 
