@@ -83,7 +83,7 @@ export default connect(mapStateToProps, null)(Home);
 
 # Issues
 
-Please [file an issue](https://github.com/Anishmprasad/react-ssr-starter-kit/issues) if you find a bug, or need help.
+Please [file an issue](https://github.com/anishmprasad/react-ssr-starter-kit/issues) if you find a bug, or need help.
 
 # Todo
 
