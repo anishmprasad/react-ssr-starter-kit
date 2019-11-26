@@ -46,9 +46,9 @@ function Nav(props) {
 
 function mapStateToProps(state) {
 	// console.log('mapStateToProps', state);
-	const { first_name: firstName } = state.userInfo && state.userInfo.personal_details;
+	const { first_name: name } = state.userInfo && state.userInfo.personal_details;
 	return {
-		name: firstName
+		name
 	};
 }
 // function mapDispatchToProps(dispatch) {
@@ -57,7 +57,4 @@ function mapStateToProps(state) {
 //     dispatch
 //   );
 // }
-export default connect(
-	mapStateToProps,
-	null
-)(Nav);
+export default connect(mapStateToProps, null)(Nav);

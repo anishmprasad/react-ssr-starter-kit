@@ -4,22 +4,22 @@ A starter kit for react serverside rendering applications
 
 # Features
 
-- Prerender Method { getInitialBeforeRender } on view components
-- ES6 Support
-- Redux Support
-- eslint Support
-- Server Side Rendering
+-   Prerender Method { getInitialBeforeRender } on view components
+-   ES6 Support
+-   Redux Support
+-   eslint Support
+-   Server Side Rendering
 
 # Packages Needed
 
-- Babel
-- React
-- Redux
-- Redux-thunk
-- Redux-Promise
-- PostCSS
-- Express
-- Hot Module Replacement
+-   Babel
+-   React
+-   Redux
+-   Redux-thunk
+-   Redux-Promise
+-   PostCSS
+-   Express
+-   Hot Module Replacement
 
 # Install dependencies
 
@@ -47,35 +47,35 @@ sample Home component for static declaration of data requirements
 
 ```jsx
 class Home extends Component {
-  render() {
-    const { data, input } = this.props;
-    const { value } = this.state;
-    return (
-      <div>
-        <Helmet encodeSpecialCharacters>
-          <title>React ServerSideRendering • Home</title>
-        </Helmet>
-        <div className={styles.intro}>
-          {data &&
-            data.map(array => {
-              return (
-                <div key={`array-${array.id}`}>
-                  <h2>{array.title}</h2>
-                  <p>{array.body}</p>
-                </div>
-              );
-            })}
-        </div>
-      </div>
-    );
-  }
+	render() {
+		const { data, input } = this.props;
+		const { value } = this.state;
+		return (
+			<div>
+				<Helmet encodeSpecialCharacters>
+					<title>React ServerSideRendering • Home</title>
+				</Helmet>
+				<div className={styles.intro}>
+					{data &&
+						data.map(array => {
+							return (
+								<div key={`array-${array.id}`}>
+									<h2>{array.title}</h2>
+									<p>{array.body}</p>
+								</div>
+							);
+						})}
+				</div>
+			</div>
+		);
+	}
 }
 Home.getInitialBeforeRender = () => InitialAction(); // static declaration of data requirements
 function mapStateToProps(state) {
-  const { sample } = state.sampleReducer;
-  return {
-    data: sample && sample.data
-  };
+	const { sample } = state.sampleReducer;
+	return {
+		data: sample && sample.data
+	};
 }
 
 export default connect(mapStateToProps, null)(Home);
@@ -87,7 +87,7 @@ Please [file an issue](https://github.com/anishmprasad/react-ssr-starter-kit/iss
 
 # Todo
 
-- Code Splitting
+-   Code Splitting
 
 # License
 
