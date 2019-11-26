@@ -60,7 +60,4 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ sampleAction, inputUpdateAction, userInfoAction }, dispatch);
 }
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
