@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const path = require('path');
 const webpack = require('webpack');
 const externals = require('./node-externals');
