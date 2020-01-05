@@ -6,7 +6,9 @@ const nodeModules = res('../node_modules');
 const externals = fs
 	.readdirSync(nodeModules)
 	.filter(x => !/\.bin|react-universal-component|webpack-flush-chunks/.test(x))
+	// eslint-disable-next-line no-shadow
 	.reduce((externals, mod) => {
+		// eslint-disable-next-line no-param-reassign
 		externals[mod] = `commonjs ${mod}`;
 		return externals;
 	}, {});

@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const path = require('path');
 const webpack = require('webpack');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
@@ -10,6 +11,7 @@ module.exports = {
 	name: 'client',
 	entry: {
 		vendor: ['react', 'react-dom'],
+		// eslint-disable-next-line comma-dangle
 		main: ['./src/app.js']
 	},
 	mode: 'production',
@@ -87,6 +89,7 @@ module.exports = {
 		}),
 		new OptimizeCssAssetsPlugin({
 			assetNameRegExp: /\.css$/g,
+			// eslint-disable-next-line global-require
 			cssProcessor: require('cssnano'),
 			cssProcessorOptions: { discardComments: { removeAll: true } },
 			canPrint: true

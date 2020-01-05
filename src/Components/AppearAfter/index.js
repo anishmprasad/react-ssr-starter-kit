@@ -1,3 +1,5 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable lines-between-class-members */
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
@@ -18,6 +20,7 @@ class AppearAfter extends Component {
 		return React.cloneElement(children, {
 			className: classNames(className, {
 				visible: isVisible,
+				// eslint-disable-next-line comma-dangle
 				hidden: !isVisible
 			})
 		});
