@@ -31,13 +31,11 @@ function Router() {
 						key={index}
 						path={route.path}
 						exact={route.exact}
-						component={props => {
-							return (
-								<route.layout {...props}>
-									<route.component {...props} />
-								</route.layout>
-							);
-						}}
+						component={props => (
+							<route.layout {...props}>
+								<route.component {...props} />
+							</route.layout>
+						)}
 					/>
 				))}
 				{/* {Routes.map(route => (
