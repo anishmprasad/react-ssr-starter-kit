@@ -46,29 +46,25 @@ Build and open your browser to http://localhost:8080.
 sample Home component for static declaration of data requirements
 
 ```jsx
-class Home extends Component {
-	render() {
-		const { data, input } = this.props;
-		const { value } = this.state;
-		return (
-			<div>
-				<Helmet encodeSpecialCharacters>
-					<title>React ServerSideRendering • Home</title>
-				</Helmet>
-				<div className={styles.intro}>
-					{data &&
-						data.map(array => {
-							return (
-								<div key={`array-${array.id}`}>
-									<h2>{array.title}</h2>
-									<p>{array.body}</p>
-								</div>
-							);
-						})}
-				</div>
+function Home({ data, input }) {
+	return (
+		<div>
+			<Helmet encodeSpecialCharacters>
+				<title>React ServerSideRendering • Home</title>
+			</Helmet>
+			<div className={styles.intro}>
+				{data &&
+					data.map(array => {
+						return (
+							<div key={`array-${array.id}`}>
+								<h2>{array.title}</h2>
+								<p>{array.body}</p>
+							</div>
+						);
+					})}
 			</div>
-		);
-	}
+		</div>
+	);
 }
 Home.getInitialBeforeRender = () => InitialAction(); // static declaration of data requirements
 function mapStateToProps(state) {
@@ -93,4 +89,4 @@ Please [file an issue](https://github.com/Anishmprasad/react-ssr-starter-kit/iss
 
 The MIT License (MIT)
 
-Copyright (c) 2019 Anish M Prasad
+Copyright (c) 2020 Anish M Prasad
