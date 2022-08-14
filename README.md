@@ -52,7 +52,7 @@ function Home({ data, input }) {
 	return (
 		<div>
 			<Helmet encodeSpecialCharacters>
-				<title>React ServerSideRendering • Home</title>
+				<title>React ServerSideRendering</title>
 			</Helmet>
 			<div className={styles.intro}>
 				{data &&
@@ -91,4 +91,4 @@ Please [file an issue](https://github.com/anishmprasad/react-ssr-starter-kit/iss
 
 The MIT License (MIT)
 
-Copyright (c) 2022 Anish M Prasad
+Copyright (c) 2023 Anish M Prasad
